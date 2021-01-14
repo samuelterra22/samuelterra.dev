@@ -1,0 +1,329 @@
+/* CV */
+.not-upgraded-text {
+	display: none;
+}
+body {
+	background-color: #f6f6f6;
+}
+ul {
+	margin-bottom: 0px;
+}
+.sf-big-content-holder {
+	margin-bottom: 15px;
+}
+
+.sf-wrapper {
+	padding: 10px 0 0 0;
+}
+
+.sf-holder {
+	width: 855px;
+	min-height: 850px;
+	margin-left: auto;
+	margin-right: auto;
+	display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;/* OLD - Firefox 19- (buggy but mostly works)*/
+	display: -ms-flexbox;/* TWEENER - IE 10 */
+	display: -webkit-flex;/* NEW - Chrome */
+	display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	margin-bottom: 100px;
+	background: #43526e !important;
+	/*background: #fff !important;*/
+	border: 1px solid #d9d9d9;
+}
+.sf-main-left {
+	float: left;
+    width:275px;
+    background: #f1f1f1 !important;
+
+}
+.sf-main-right {
+	float:left;
+	width: calc(100% - 275px);
+	background: white !important;
+	padding: 30px 30px 30px 20px;
+}
+.sf-image-holder {
+	text-align: center;
+	background-color: #43526e !important;
+	height: 290px;
+}
+.sf-small-holder {
+	padding: 0px 20px 0px 30px;
+	margin-bottom: 20px;
+}
+.sf-image-holder {
+	position: relative;
+	background: url('https://www.cv-mallen.se/wp-content/uploads/2016/11/snoflinga-back2.png') no-repeat bottom right;
+	background-size: cover;
+}
+.sf-image-background img {
+	width: 100%;
+	height: auto;
+}
+.cvm-avatar {
+
+}
+.cvm-avatar img {
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	margin-top: 25px;
+	border: 3px solid white;
+}
+.ref-small-holder {
+	margin-bottom: 10px;
+}
+.sf-name-holder {
+	font-size: 35px;
+	border-bottom: 3px solid #43526e !important;
+	font-weight: 700;
+	color: #4c4c4c;
+	letter-spacing: 1px;
+}
+.sf-jobtitle-holder-large {
+	font-size: 17px;
+}
+.sf-extra-margin {
+	display: block;
+	margin-bottom: 40px;
+}
+.sf-heading-holder {
+	border-bottom: 3px solid #43526e !important;
+	margin-bottom: 10px;
+	content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+    padding-top: 5px;
+}
+.sf-big-holder {
+	margin-bottom: 20px;
+}
+.contact-small-holder {
+	margin-bottom: 2px;
+}
+
+.big-fa-holder {
+	min-width: 25px;
+	float: left;
+}
+.fa-contact-holder {
+	overflow: hidden;
+}
+.fa-holder {
+	float: left;
+	width: 40px;
+}
+.contact-holder {
+	float: left;
+	padding-top: 2px;
+}
+.fa-skill {
+	width: 40px;
+	float: left;
+}
+/* TEXTS */
+.text {
+	font-size: 13px;
+}
+.sf-summary-heading {
+	font-size: 17px;
+	display: block;
+	font-weight: 600;
+	color: #4c4c4c;
+	font-family: "Source Sans Pro", "open sans", "Century Gothic", CenturyGothic, "Microsoft YaHei New", "Microsoft Yahei", SimSun, STXihei, SimHei, sans-serif;;
+}
+.sf-small-headings {
+	font-size: 17px;
+	font-weight: 600;
+	color: #4c4c4c;
+	font-family: "Source Sans Pro", "open sans", "Century Gothic", CenturyGothic, "Microsoft YaHei New", "Microsoft Yahei", SimSun, STXihei, SimHei, sans-serif;;
+}
+.datum {
+	float: right;
+	font-weight: 700;
+	color: #43526e;
+}
+.titel {
+	font-size: 16px;
+	color: #4c4c4c;
+}
+.namn {
+	font-size: 15px;
+	font-weight: 700;
+	color: #43526e;
+	display: block;
+}
+.fa-skill .fa {
+	font-size: 17px;
+	color: #43526e !important;
+}
+.fa-holder .fa {
+	font-size: 17px;
+}
+.tt-small-icon {
+	font-size: 15px;
+	color: #43526e !important;
+}
+.tt-title-icon {
+	font-size: 17px;
+	color: #4c4c4c;
+	line-height: 28px;
+}
+.social-icon {
+	font-size: 17px;
+	margin-right: 5px;
+	color: #43526e !important;
+}
+.sf-jobtitle-holder-mobile {
+	display: none;
+}
+.name-mobile {
+	display: none;
+}
+/* MOBILE */
+@media (max-width: 767px) {
+.no-pjs-render .sf-jobtitle-holder-large {
+	display: none;
+}
+.no-pjs-render .sf-jobtitle-holder-mobile {
+	display: block;
+	font-size: 15px;
+	color: white;
+}
+.no-pjs-render .name-mobile {
+	padding-top: 10px;
+	font-size: 30px;
+	color: white;
+	display: block;
+}
+.no-pjs-render .sf-name-holder {
+	display: none;
+}
+.no-pjs-render .mobile-padding-top {
+	padding-top: 20px;
+}
+.no-pjs-render .sf-image-holder {
+	height: 100%;
+	padding-bottom: 20px;
+}
+.no-pjs-render .sf-image-background {
+	display: none;
+}
+.no-pjs-render .sf-holder {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline;
+	margin-bottom: 100px;
+	padding-bottom: 50px;
+	background: #6b3c8e !important;
+	background: #fff ! important;
+	border: none;
+}
+
+.no-pjs-render .sf-main-left {
+	float: left;
+    width:100%;
+    background: #d6d6d6 !important;
+}
+.no-pjs-render .sf-main-right {
+	float:left;
+    width:100%;
+	background: white !important;
+	padding: 20px;
+}
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+.no-pjs-render .sf-jobtitle-holder-mobile {
+	display: block;
+	font-size: 15px;
+	color: white;
+}
+.no-pjs-render .name-mobile {
+	padding-top: 10px;
+	font-size: 30px;
+	color: white;
+	display: block;
+}
+.no-pjs-render .sf-name-holder {
+	display: none;
+}
+.no-pjs-render .mobile-padding-top {
+	padding-top: 20px;
+}
+.no-pjs-render .sf-image-holder {
+	height: 100%;
+	padding-bottom: 20px;
+}
+.no-pjs-render .sf-image-background {
+	display: none;
+}
+.no-pjs-render .sf-holder {
+	/* width: 1000px; */
+	margin-left: auto;
+	margin-right: auto;
+	display: inline;
+	margin-bottom: 100px;
+	padding-bottom: 50px;
+	background: #6b3c8e !important;
+	background: #fff ! important;
+	border: none;
+}
+
+.no-pjs-render .sf-main-left {
+	float: left;
+    width:100%;
+    background: #d6d6d6 !important;
+}
+.no-pjs-render .sf-main-right {
+	float:left;
+    width:100%;
+	background: white !important;
+	padding: 20px;
+}
+}
+
+@media print {
+a[href]:after {
+	content: none !important;
+}
+
+body{
+	background-color: white !important;
+}
+
+.name-mobile {
+	font-size: 25px;
+	color: white;
+	display: none;
+}
+.sf-name-holder {
+	display: block;
+}
+.mobile-padding-top {
+	padding-top: 0px;
+}
+
+.sf-holder {
+	background: #fff !important;
+	border: none !important;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+.sf-main-left {
+    background: #f1f1f1 !important;
+}
+.sf-main-right {
+	padding-bottom: 0px !important;
+}
+.sf-big-content-holder:last-child {
+	margin-bottom: 0px;
+}
+.sf-image-holder {
+	background: url('https://www.cv-mallen.se/wp-content/uploads/2016/11/snoflinga-back2.png') no-repeat bottom right !important;
+	background-size: cover !important;
+}
+}
