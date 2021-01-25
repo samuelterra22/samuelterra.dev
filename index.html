@@ -33,7 +33,7 @@
             margin: auto;
             width: 100%;
             font-family: 'Montserrat', sans-serif;
-            color: #222;
+            color: #222!important;
             font-size: 48px;
             font-weight: normal;
             text-transform: uppercase;
@@ -42,12 +42,18 @@
         h1 small {
             display: block;
             text-transform: lowercase;
-            color: #696969;
+            color: #696969!important;
             font-size: 18px;
             margin-top: 20px;
         }
+
+        a {
+            color: #696969!important;
+            margin: 0 5px;
+        }
     </style>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
@@ -97,7 +103,19 @@
 </head>
 <body>
 
-<h1>Work in Progress<small>Check back soon</small></h1>
+<h1>
+    Work in Progress
+    <small>Check back soon</small>
+    <small>
+        <a href="https://github.com/samuelterra22" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.facebook.com/SamuelTerra22/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/samuelterra22/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/samuelterra22/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://t.me/samuelterra22" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+        <a href="https://stackoverflow.com/users/9738556/samuel-terra" target="_blank" title="StackOverflow"><i class="fab fa-stack-overflow"></i></a>
+        <a href="mailto:samuelterra22@gmail.com" target="_blank" title="Gmail"><i class="fas fa-envelope"></i></a>
+    </small>
+</h1>
 
 </body>
 </html>
