@@ -9,9 +9,9 @@
 :root {
   --bg-primary: #0a0a0f;
   --text-primary: #f0f0f5;
-  --text-secondary: #7a7a95;
-  --text-muted: #50506a;
-  --accent: #6c63ff;
+  --text-secondary: #8e8ea8;
+  --text-muted: #8585a0;
+  --accent: #5b54e8;
   --accent-soft: rgba(108, 99, 255, 0.12);
   --accent-glow: rgba(108, 99, 255, 0.3);
   --glass-bg: rgba(255, 255, 255, 0.035);
@@ -302,7 +302,7 @@ body::after {
 }
 
 .cta:hover {
-  background: #5b52f0;
+  background: #4e47d4;
   transform: translateY(-2px);
   box-shadow: 0 8px 30px var(--accent-glow);
 }
