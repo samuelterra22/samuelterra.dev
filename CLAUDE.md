@@ -37,7 +37,7 @@ python3 -m http.server 8000
 
 ## Technical Notes
 
-- Google Analytics tracking ID: `G-0WSF0B0Z83`.
+- Google Analytics tracking ID: `G-JGZ7YDLZTS`.
 - Icons are inline SVGs (no Font Awesome CDN — eliminated ~80KB).
 - Google Fonts loaded via `<link>` with preconnect (NOT CSS `@import`).
 - Avatar has animated conic-gradient ring with glow effect.
