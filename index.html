@@ -8,7 +8,8 @@
   <!-- Preconnect + Fonts (non-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"></noscript>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -115,13 +116,24 @@
   }
   </script>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JGZ7YDLZTS"></script>
+  <!-- Google tag (gtag.js) — deferred until after page is interactive -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-JGZ7YDLZTS');
+    (function(){
+      var load = function(){
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-JGZ7YDLZTS';
+        document.head.appendChild(s);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(load);
+      } else {
+        setTimeout(load, 2000);
+      }
+    })();
   </script>
 </head>
 <body>
@@ -131,15 +143,18 @@
     <!-- Hero -->
     <header class="hero">
       <div class="avatar-wrapper">
-        <img
-          class="avatar"
-          src="/avatar.png"
-          alt="Samuel Terra Vieira, engenheiro de software especialista em soluções digitais"
-          width="130"
-          height="130"
-          loading="eager"
-          fetchpriority="high"
-        >
+        <picture>
+          <source srcset="/avatar.webp" type="image/webp">
+          <img
+            class="avatar"
+            src="/avatar.png"
+            alt="Samuel Terra Vieira, engenheiro de software especialista em soluções digitais"
+            width="130"
+            height="130"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
       </div>
 
       <h1 class="name">Samuel Terra Vieira</h1>
