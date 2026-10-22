@@ -1,7 +1,7 @@
 ---
 import Base from '@layouts/Base.astro';
 import { getPublications } from '@lib/content';
-import { publicationTypeLabels } from '@lib/labels';
+import { publicationTypeLabels, site } from '@lib/labels';
 import { breadcrumbs, scholarlyArticle } from '@lib/seo';
 
 // Ordem decrescente de ano (getPublications ja ordena assim).
@@ -23,7 +23,7 @@ const linkFor = (p: (typeof publications)[number]['data']) =>
 
 <Base
   title="Pesquisa"
-  description="Cinco publicações em redes sem fio, qualidade de voz e aprendizado de máquina, com dissertação, interesses e material de aula."
+  description="Seis trabalhos em redes sem fio, qualidade de voz e aprendizado de máquina, com DOI, mais interesses de pesquisa e material de aula."
   path={path}
   jsonLd={jsonLd}
 >
@@ -32,10 +32,14 @@ const linkFor = (p: (typeof publications)[number]['data']) =>
     <p class="lead mt-5 text-ink-muted">
       Mestre em Ciência da Computação pela UFLA, na linha de redes de computadores e sistemas embarcados.
     </p>
+    <p class="meta mt-4">
+      <a href={site.lattes} class="text-signal-text">Lattes</a> &middot;
+      <a href={site.orcid} class="text-signal-text">ORCID</a> &middot;
+      <a href={site.scholar} class="text-signal-text">Google Scholar</a>
+    </p>
 
     <section class="mt-16">
       <h2 class="display-md">Publicações</h2>
-      {/* confirmar: DOI dos dois artigos do SoftCOM 2019; links de Lattes, ORCID e Google Scholar */}
       {
         publications.length > 0 ? (
           <ol class="mt-6">
@@ -78,14 +82,6 @@ const linkFor = (p: (typeof publications)[number]['data']) =>
     </section>
 
     <section class="mt-16">
-      <h2 class="display-md">Dissertação</h2>
-      <p class="body mt-6 text-ink-muted">
-        Mestrado na UFLA, de março de 2019 a junho de 2021, na linha de redes de computadores e sistemas embarcados.
-      </p>
-      {/* confirmar: titulo da dissertacao e resumo em linguagem comum */}
-    </section>
-
-    <section class="mt-16">
       <h2 class="display-md">Interesses de pesquisa</h2>
       <ul class="mt-6 space-y-3">
         <li class="body">Redes sem fio: posicionamento de pontos de acesso e planejamento de rede.</li>
@@ -98,9 +94,10 @@ const linkFor = (p: (typeof publications)[number]['data']) =>
       <h2 class="display-md">Material de aula</h2>
       <p class="body mt-6">
         Workshop "Desenvolvimento de aplicações Laravel: ferramentas, performance e qualidade com IA",
-        dado para a equipe de desenvolvimento da UFLA em 9 de setembro de 2026.
+        dado para a equipe de desenvolvimento da UFLA em 9 de setembro de 2026. O
+        <a href="https://github.com/samuelterra22/workshop-ufla-laravel" class="text-signal-text">projeto de referência</a>
+        está no GitHub, com o quality gate completo e três defeitos plantados para o laboratório.
       </p>
-      {/* confirmar: link para download do material do workshop */}
     </section>
   </div>
 </Base>
