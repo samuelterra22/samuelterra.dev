@@ -1,0 +1,27 @@
+---
+// Marca de nivel: tres bolinhas (preenchidas em signal, vazias em ink-muted) e o rotulo
+// por extenso em meta. As bolinhas sao decorativas; o rotulo e o que vale sem cor e no leitor.
+import { levelDots, levelLabels, type Level } from '@lib/labels';
+
+interface Props {
+  level: Level;
+}
+const { level } = Astro.props;
+const filled = levelDots[level];
+const label = levelLabels[level];
+---
+
+<span class="inline-flex items-center gap-2">
+  <span class="inline-flex items-center gap-1" aria-hidden="true">
+    {
+      [1, 2, 3].map((i) =>
+        i <= filled ? (
+          <span class="block h-2.5 w-2.5 rounded-pill bg-signal"></span>
+        ) : (
+          <span class="block h-2.5 w-2.5 rounded-pill border-[1.25px] border-ink-muted"></span>
+        ),
+      )
+    }
+  </span>
+  <span class="meta">{label}</span>
+</span>

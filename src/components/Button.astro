@@ -1,0 +1,30 @@
+---
+// Tres acoes, do mais ao menos pesado (docs/components.md):
+// primary = ink sobre paper; secondary = contorno hairline; text = link em signal-text.
+// O componente nao recebe cor: a hierarquia e fixa pela variante.
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'text';
+  arrow?: boolean;
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { href, variant = 'secondary', arrow = false, class: extra = '', ...rest } = Astro.props;
+
+const base =
+  'inline-flex items-center gap-2 font-sans text-[15px] leading-none transition-colors duration-150 rounded-md';
+const styles = {
+  primary:
+    'bg-ink text-paper px-4 py-2.5 hover:bg-ink-muted no-underline',
+  secondary:
+    'border border-hairline text-ink px-4 py-2.5 hover:border-ink no-underline bg-transparent',
+  text: 'text-signal-text underline decoration-hairline underline-offset-4 hover:decoration-signal px-0 py-0',
+};
+const cls = `${base} ${styles[variant]} ${extra}`;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag class={cls} {...href ? { href } : {}} {...rest}>
+  <slot />{arrow && <span aria-hidden="true">&rarr;</span>}
+</Tag>

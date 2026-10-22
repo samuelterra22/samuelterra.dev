@@ -1,0 +1,57 @@
+---
+// Barra de metadados em meta, entre duas linhas hairline. Ordem fixa: nivel, tempo, data, temas.
+// Separador: ponto medio em hairline, nunca barra ou virgula. No rodape mostra publicado/atualizado.
+import Level from './Level.astro';
+import { topicLabels, isoDate, type Level as LevelType, type Topic } from '@lib/labels';
+
+interface Props {
+  level: LevelType;
+  minutes: number;
+  date: Date;
+  updatedDate?: Date;
+  topics: Topic[];
+  footer?: boolean;
+}
+const { level, minutes, date, updatedDate, topics, footer = false } = Astro.props;
+const Sep = '·';
+---
+
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1 border-y border-hairline py-2">
+  <Level level={level} />
+  <span class="text-hairline" aria-hidden="true">{Sep}</span>
+  <span class="meta">{minutes} min de leitura</span>
+  <span class="text-hairline" aria-hidden="true">{Sep}</span>
+  {
+    footer ? (
+      <span class="meta">
+        publicado <time datetime={isoDate(date)}>{isoDate(date)}</time>
+        {updatedDate && (
+          <>
+            {' '}&middot; atualizado{' '}
+            <time datetime={isoDate(updatedDate)}>{isoDate(updatedDate)}</time>
+          </>
+        )}
+      </span>
+    ) : (
+      <time class="meta" datetime={isoDate(date)}>
+        {isoDate(date)}
+      </time>
+    )
+  }
+  {
+    topics.length > 0 && (
+      <>
+        <span class="text-hairline" aria-hidden="true">
+          {Sep}
+        </span>
+        <span class="meta flex flex-wrap gap-x-2">
+          {topics.map((t) => (
+            <a href={`/articles/topic/${t}`} class="text-signal-text no-underline hover:underline">
+              {topicLabels[t]}
+            </a>
+          ))}
+        </span>
+      </>
+    )
+  }
+</div>

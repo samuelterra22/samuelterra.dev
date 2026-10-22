@@ -1,0 +1,17 @@
+---
+// Caixa recolhida "Em palavras simples": um termo pesado em duas frases, details nativo, zero JS.
+// Nasce recolhida. O triangulo em ink-muted e o unico marcador. Um termo por caixa.
+interface Props {
+  term: string;
+}
+const { term } = Astro.props;
+---
+
+<details class="my-4 rounded-md border border-hairline bg-paper-sunken px-4 py-3 [&>summary]:cursor-pointer">
+  <summary class="body-sm marker:text-ink-muted">
+    Em palavras simples: <strong class="body-strong">{term}</strong>
+  </summary>
+  <div class="body-sm mt-2 text-ink-muted [&>p]:m-0 space-y-2">
+    <slot />
+  </div>
+</details>

@@ -1,0 +1,15 @@
+---
+// Caixa de abertura "Para quem esta comecando": tres a cinco linhas em linguagem comum,
+// sobre paper-raised com borda hairline. O rotulo em signal-text e o unico uso de cor.
+// Uma por artigo, depois da MetaBar e antes do primeiro h2. Nunca em nota.
+---
+
+<aside
+  aria-label="Para quem esta comecando"
+  class="my-8 rounded-md border border-hairline bg-paper-raised px-5 py-4"
+>
+  <p class="label mb-2 text-signal-text">Para quem esta comecando</p>
+  <div class="body-sm space-y-3 [&>p]:m-0">
+    <slot />
+  </div>
+</aside>

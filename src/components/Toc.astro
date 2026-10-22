@@ -1,0 +1,28 @@
+---
+// Sumario do artigo: lista de h2 e h3, fixo a esquerda no desktop (sticky), escondido no celular.
+// So navegacao por ancora; zero JS.
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  items.length > 1 && (
+    <nav aria-label="Sumario" class="hidden lg:block sticky top-8 self-start">
+      <p class="label mb-3">Sumario</p>
+      <ul class="space-y-2 border-l border-hairline">
+        {items.map((h) => (
+          <li class={h.depth === 3 ? 'pl-6' : 'pl-4'}>
+            <a href={`#${h.slug}`} class="meta text-ink-muted no-underline hover:text-ink">
+              {h.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}

@@ -1,0 +1,47 @@
+---
+// Cabecalho de SEO: title, description, canonical, Open Graph, Twitter e JSON-LD.
+// O JSON-LD por tipo de pagina (Person, TechArticle, ScholarlyArticle, BreadcrumbList)
+// chega pronto em `jsonLd`; os construtores estao em src/lib/seo.ts.
+import { site } from '@lib/labels';
+
+interface Props {
+  title: string;
+  description: string;
+  // Caminho canonico, ex.: '/articles/slug'. A home passa '/'.
+  path: string;
+  // Imagem de compartilhamento absoluta; cai no OG padrao quando ausente.
+  ogImage?: string;
+  type?: 'website' | 'article' | 'profile';
+  jsonLd?: Record<string, unknown>[];
+}
+
+const { title, description, path, ogImage, type = 'website', jsonLd = [] } = Astro.props;
+
+const canonical = new URL(path, site.url).href;
+const image = ogImage ?? new URL('/og/default.png', site.url).href;
+// Title com o nome do site, menos na home (que ja e o nome).
+const fullTitle = path === '/' ? title : `${title} | ${site.name}`;
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+{
+  jsonLd.map((data) => (
+    <script type="application/ld+json" set:html={JSON.stringify(data)} />
+  ))
+}

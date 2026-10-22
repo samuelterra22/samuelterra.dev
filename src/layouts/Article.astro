@@ -1,0 +1,110 @@
+---
+// Layout de leitura: coluna de 68 caracteres e sumario fixo a esquerda no desktop.
+// Recebe os dados do frontmatter e monta o JSON-LD (TechArticle + BreadcrumbList).
+import type { MarkdownHeading } from 'astro';
+import Base from './Base.astro';
+import MetaBar from '@components/MetaBar.astro';
+import Toc from '@components/Toc.astro';
+import { readingMinutes, type Level, type Topic } from '@lib/labels';
+import { techArticle, breadcrumbs } from '@lib/seo';
+
+interface Props {
+  kind: 'article' | 'note';
+  title: string;
+  description: string;
+  path: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  level: Level;
+  topics: Topic[];
+  series?: string;
+  linkedin?: string;
+  headings: MarkdownHeading[];
+  body: string;
+  ogImage?: string;
+}
+const {
+  kind,
+  title,
+  description,
+  path,
+  pubDate,
+  updatedDate,
+  level,
+  topics,
+  linkedin,
+  headings,
+  body,
+  ogImage,
+} = Astro.props;
+
+const minutes = readingMinutes(body);
+
+const trail = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Artigos', path: '/articles' },
+  ...(kind === 'note' ? [{ name: 'Notas', path: '/articles/notes' }] : []),
+  { name: title, path },
+];
+
+const jsonLd = [
+  techArticle({ title, description, path, pubDate, updatedDate, image: ogImage }),
+  breadcrumbs(trail),
+];
+---
+
+<Base title={title} description={description} path={path} type="article" ogImage={ogImage} jsonLd={jsonLd}>
+  <div class="grid gap-12 lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)]">
+    <Toc headings={headings} />
+    <article class="w-full max-w-[var(--measure)]">
+      <header>
+        <h1 class="display-lg">{title}</h1>
+        <div class="mt-6">
+          <MetaBar level={level} minutes={minutes} date={pubDate} topics={topics} />
+        </div>
+      </header>
+
+      <div class="article-body mt-8">
+        <slot />
+      </div>
+
+      <footer class="mt-12">
+        <MetaBar
+          level={level}
+          minutes={minutes}
+          date={pubDate}
+          updatedDate={updatedDate}
+          topics={topics}
+          footer={true}
+        />
+        {
+          linkedin && (
+            <p class="meta mt-4">
+              <a href={linkedin} class="text-signal-text">
+                Discussao no LinkedIn
+              </a>
+            </p>
+          )
+        }
+      </footer>
+    </article>
+  </div>
+</Base>
+
+<style>
+  /* Corpo do artigo: ritmo vertical e largura de leitura. Os estilos de h2/h3/p/code vem do global. */
+  .article-body :global(h2) {
+    margin-top: var(--space-12);
+  }
+  .article-body :global(h3) {
+    margin-top: var(--space-8);
+  }
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin: 0 0 var(--space-4);
+    padding-left: var(--space-6);
+  }
+  .article-body :global(li) {
+    margin-bottom: var(--space-2);
+  }
+</style>
