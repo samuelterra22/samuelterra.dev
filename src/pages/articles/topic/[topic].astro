@@ -1,0 +1,43 @@
+---
+import Base from '@layouts/Base.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import { topicLabels } from '@lib/labels';
+import { topics } from '../../../content.config';
+import { getReading } from '@lib/content';
+import { breadcrumbs } from '@lib/seo';
+
+export async function getStaticPaths() {
+  return topics.map((topic) => ({ params: { topic }, props: { topic } }));
+}
+
+const { topic } = Astro.props;
+const label = topicLabels[topic];
+const items = (await getReading()).filter((i) => i.topics.includes(topic));
+const path = `/articles/topic/${topic}`;
+
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Inicio', path: '/' },
+    { name: 'Artigos', path: '/articles' },
+    { name: label, path },
+  ]),
+];
+---
+
+<Base title={`Tema: ${label}`} description={`Artigos, notas e trilhas sobre ${label}.`} path={path} jsonLd={jsonLd}>
+  <div class="max-w-[var(--measure)]">
+    <p class="label">Tema</p>
+    <h1 class="display-lg mt-2">{label}</h1>
+    {
+      items.length > 0 ? (
+        <div class="mt-8">
+          {items.map((i) => (
+            <ArticleCard kind={i.kind} href={i.href} title={i.title} description={i.description} level={i.level} minutes={i.minutes} date={i.date} series={i.series} />
+          ))}
+        </div>
+      ) : (
+        <p class="body mt-8 text-ink-muted">Ainda nao ha nada publicado neste tema.</p>
+      )
+    }
+  </div>
+</Base>

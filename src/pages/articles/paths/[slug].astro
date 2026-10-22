@@ -1,0 +1,94 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '@layouts/Base.astro';
+import MetaBar from '@components/MetaBar.astro';
+import { readingMinutes } from '@lib/labels';
+import { getPaths, pathHref, articleHref, noteHref } from '@lib/content';
+import { breadcrumbs } from '@lib/seo';
+
+export async function getStaticPaths() {
+  const paths = await getPaths();
+  return paths.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const path = pathHref(entry.id);
+
+// Resolve cada passo para titulo e link; passo externo mantem a URL.
+const steps = await Promise.all(
+  entry.data.steps.map(async (s) => {
+    if (s.article) {
+      const a = await getEntry(s.article);
+      return { kind: 'Artigo', title: a.data.title, href: articleHref(a.id), why: s.why, stopHere: s.stopHere, external: false };
+    }
+    if (s.note) {
+      const n = await getEntry(s.note);
+      return { kind: 'Nota', title: n.data.title, href: noteHref(n.id), why: s.why, stopHere: s.stopHere, external: false };
+    }
+    return { kind: 'Leitura externa', title: s.external!, href: s.external!, why: s.why, stopHere: s.stopHere, external: true };
+  }),
+);
+
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Inicio', path: '/' },
+    { name: 'Artigos', path: '/articles' },
+    { name: 'Trilhas', path: '/articles' },
+    { name: entry.data.title, path },
+  ]),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: entry.data.title,
+    itemListElement: steps.map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: s.title })),
+  },
+];
+---
+
+<Base title={entry.data.title} description={entry.data.description} path={path} type="article" jsonLd={jsonLd}>
+  <div class="max-w-[var(--measure)]">
+    <p class="label">Trilha</p>
+    <h1 class="display-lg mt-2">{entry.data.title}</h1>
+    <div class="mt-6">
+      <MetaBar
+        level={entry.data.level}
+        minutes={readingMinutes(entry.body ?? '')}
+        date={entry.data.pubDate}
+        topics={entry.data.topic}
+      />
+    </div>
+
+    <div class="article-body mt-8">
+      <Content />
+    </div>
+
+    <ol class="mt-10">
+      {
+        steps.map((s, i) => (
+          <li class="border-t border-hairline py-6">
+            <p class="meta">{String(i + 1).padStart(2, '0')} &middot; {s.kind}</p>
+            <h2 class="display-sm mt-1">
+              {s.external ? (
+                <a href={s.href} class="text-ink hover:decoration-signal">{s.title}</a>
+              ) : (
+                <a href={s.href} class="text-ink no-underline hover:underline hover:decoration-signal [text-decoration-thickness:4px]">
+                  {s.title}
+                </a>
+              )}
+            </h2>
+            <p class="body-sm mt-2 text-ink-muted">{s.why}</p>
+            {s.stopHere && (
+              <p class="label mt-3 text-signal-text">Pare aqui se so quer o basico</p>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</Base>
+
+<style>
+  .article-body :global(h2) { margin-top: var(--space-12); }
+  .article-body :global(p) { margin-bottom: var(--space-4); }
+</style>

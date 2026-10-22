@@ -1,0 +1,51 @@
+---
+import Base from '@layouts/Base.astro';
+import { breadcrumbs } from '@lib/seo';
+import glossary from '../../content/glossary.json';
+
+// Glossario: termo e definicao. Cada termo e definido uma vez e reaproveitado nas caixas
+// "Em palavras simples" dos artigos; a caixa e o glossario nao podem divergir.
+interface Term {
+  term: string;
+  definition: string;
+}
+const terms = (glossary as Term[]).sort((a, b) => a.term.localeCompare(b.term, 'pt-BR'));
+
+const path = '/articles/glossary';
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Inicio', path: '/' },
+    { name: 'Artigos', path: '/articles' },
+    { name: 'Glossario', path },
+  ]),
+];
+---
+
+<Base
+  title="Glossario"
+  description="Os termos tecnicos dos artigos, cada um explicado em duas frases."
+  path={path}
+  jsonLd={jsonLd}
+>
+  <div class="max-w-[var(--measure)]">
+    <h1 class="display-lg">Glossario</h1>
+    <p class="lead mt-5 text-ink-muted">
+      Os termos que aparecem nas caixas "Em palavras simples", reunidos em um lugar so.
+    </p>
+
+    {
+      terms.length > 0 ? (
+        <dl class="mt-10">
+          {terms.map((t) => (
+            <div class="border-t border-hairline py-5">
+              <dt class="body-strong">{t.term}</dt>
+              <dd class="body-sm mt-1 m-0 text-ink-muted">{t.definition}</dd>
+            </div>
+          ))}
+        </dl>
+      ) : (
+        <p class="body mt-10 text-ink-muted">O glossario cresce junto com os artigos. Ainda nao ha termos.</p>
+      )
+    }
+  </div>
+</Base>

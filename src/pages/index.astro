@@ -1,9 +1,76 @@
 ---
 import Base from '@layouts/Base.astro';
+import ArticleCard from '@components/ArticleCard.astro';
+import Button from '@components/Button.astro';
 import { site } from '@lib/labels';
+import { getReading, getProjects, projectHref } from '@lib/content';
+import { person, breadcrumbs } from '@lib/seo';
+
+const reading = (await getReading()).slice(0, 3);
+const projects = (await getProjects()).slice(0, 3);
+
+const jsonLd = [person(), breadcrumbs([{ name: 'Inicio', path: '/' }])];
 ---
 
-<Base title={site.name} description={site.intro} path="/" type="profile">
-  <h1 class="display-xl">{site.name}</h1>
-  <p class="lead mt-4 max-w-[var(--measure)] text-ink-muted">{site.intro}</p>
+<Base title={site.name} description={site.intro} path="/" type="profile" jsonLd={jsonLd}>
+  <section class="max-w-[var(--measure)]">
+    <h1 class="display-xl">{site.name}</h1>
+    <p class="lead mt-5 text-ink-muted">{site.intro}</p>
+    <p class="meta mt-5">
+      O que estou estudando e construindo agora fica em <a href="/now" class="text-signal-text">Agora</a>.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href="/articles" variant="primary">Ler os artigos</Button>
+      <Button href="/about" variant="secondary">Sobre mim</Button>
+    </div>
+  </section>
+
+  {
+    reading.length > 0 && (
+      <section class="mt-24 max-w-[var(--measure)]">
+        <h2 class="display-md">Artigos recentes</h2>
+        <div class="mt-6">
+          {reading.map((item) => (
+            <ArticleCard
+              kind={item.kind}
+              href={item.href}
+              title={item.title}
+              description={item.description}
+              level={item.level}
+              minutes={item.minutes}
+              date={item.date}
+              series={item.series}
+            />
+          ))}
+        </div>
+        <div class="mt-6 border-t border-hairline pt-6">
+          <Button href="/articles" variant="text" arrow={true}>Todos os artigos</Button>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    projects.length > 0 && (
+      <section class="mt-20 max-w-[var(--measure)]">
+        <h2 class="display-md">Projetos</h2>
+        <ul class="mt-6">
+          {projects.map((p) => (
+            <li class="border-t border-hairline py-6">
+              <h3 class="display-sm">
+                <a href={projectHref(p.id)} class="text-ink no-underline hover:underline hover:decoration-signal [text-decoration-thickness:4px]">
+                  {p.data.title}
+                </a>
+              </h3>
+              <p class="body-sm mt-2 text-ink-muted">{p.data.description}</p>
+              <p class="meta mt-3">{p.data.year} &middot; {p.data.stack.join(', ')}</p>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-6 border-t border-hairline pt-6">
+          <Button href="/projects" variant="text" arrow={true}>Todos os projetos</Button>
+        </div>
+      </section>
+    )
+  }
 </Base>

@@ -1,0 +1,60 @@
+---
+import Base from '@layouts/Base.astro';
+import Button from '@components/Button.astro';
+import { site } from '@lib/labels';
+import { breadcrumbs } from '@lib/seo';
+
+const email = 'samuelterra22@gmail.com';
+const telegram = 'https://t.me/samuelterra22';
+
+const title = 'Contato';
+const description =
+  'E-mail, LinkedIn, GitHub e Telegram. Projeto comercial e com a Volpa.';
+
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Inicio', path: '/' },
+    { name: 'Contato', path: '/contact' },
+  ]),
+];
+
+const links = [
+  { label: 'E-mail', value: email, href: `mailto:${email}` },
+  { label: 'LinkedIn', value: 'in/samuelterra22', href: site.linkedin },
+  { label: 'GitHub', value: '@samuelterra22', href: site.github },
+  { label: 'Telegram', value: 't.me/samuelterra22', href: telegram },
+];
+---
+
+<Base title={title} description={description} path="/contact" jsonLd={jsonLd}>
+  <div class="max-w-[var(--measure)]">
+    <h1 class="display-lg">Contato</h1>
+    <p class="lead mt-5 text-ink-muted">
+      Para conversar sobre codigo, docencia ou pesquisa, qualquer um dos caminhos abaixo serve.
+    </p>
+
+    <dl class="mt-10">
+      {
+        links.map((l) => (
+          <div class="flex items-baseline gap-4 border-t border-hairline py-4">
+            <dt class="label w-24 shrink-0">{l.label}</dt>
+            <dd class="body-sm m-0">
+              <a href={l.href} class="text-signal-text">
+                {l.value}
+              </a>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <p class="body mt-10">
+      Proposta e contrato de software sao da <a href="https://volpa.com.br" class="text-signal-text">Volpa</a>,
+      a empresa. Para orcamento de um projeto, fale por la.
+    </p>
+
+    <div class="mt-8">
+      <Button href={`mailto:${email}`} variant="primary">Mandar mensagem</Button>
+    </div>
+  </div>
+</Base>

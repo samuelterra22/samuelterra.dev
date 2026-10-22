@@ -1,0 +1,87 @@
+---
+import Base from '@layouts/Base.astro';
+import { getPublications } from '@lib/content';
+import { breadcrumbs, scholarlyArticle } from '@lib/seo';
+
+const publications = await getPublications();
+
+const path = '/research';
+const jsonLd = [
+  breadcrumbs([
+    { name: 'Inicio', path: '/' },
+    { name: 'Pesquisa', path },
+  ]),
+  ...publications.map((p) => scholarlyArticle(p.data)),
+];
+---
+
+<Base
+  title="Pesquisa"
+  description="Publicacoes com DOI, dissertacao de mestrado, interesses de pesquisa e material de aula."
+  path={path}
+  jsonLd={jsonLd}
+>
+  <div class="max-w-[var(--measure)]">
+    <h1 class="display-lg">Pesquisa</h1>
+    <p class="lead mt-5 text-ink-muted">
+      Mestre em Ciencia da Computacao pela UFLA, na linha de redes e sistemas embarcados.
+    </p>
+
+    <section class="mt-16">
+      <h2 class="display-md">Publicacoes</h2>
+      {
+        publications.length > 0 ? (
+          <ol class="mt-6">
+            {publications.map((p) => (
+              <li class="border-t border-hairline py-5">
+                <h3 class="display-sm">{p.data.title}</h3>
+                <p class="meta mt-1">
+                  {p.data.authors.join('; ')} &middot; {p.data.venue} &middot; {p.data.year}
+                </p>
+                <p class="body-sm mt-2 text-ink-muted">{p.data.summary}</p>
+                {p.data.doi && (
+                  <p class="meta mt-2">
+                    <a href={p.data.url ?? `https://doi.org/${p.data.doi}`} class="text-signal-text">
+                      DOI: {p.data.doi}
+                    </a>
+                  </p>
+                )}
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p class="body mt-6 text-ink-muted">
+            Quatro publicacoes cientificas. Titulos, veiculos, anos e DOI em confirmacao.
+          </p>
+        )
+      }
+    </section>
+    {/* confirmar: titulos, veiculos, anos e DOI das 4 publicacoes; Lattes, ORCID e Google Scholar */}
+
+    <section class="mt-16">
+      <h2 class="display-md">Dissertacao</h2>
+      <p class="body mt-6 text-ink-muted">
+        Mestrado na UFLA (2019 a 2021), na linha de redes e sistemas embarcados.
+      </p>
+      {/* confirmar: titulo da dissertacao e resumo em linguagem comum */}
+    </section>
+
+    <section class="mt-16">
+      <h2 class="display-md">Interesses de pesquisa</h2>
+      <ul class="mt-6 space-y-3">
+        <li class="body">IA aplicada em producao: agentes, memoria semantica e aprovacao humana.</li>
+        <li class="body">Redes e sistemas embarcados, da formacao de mestrado.</li>
+        <li class="body">Engenharia de software com metodo dirigido por especificacao.</li>
+      </ul>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="display-md">Material de aula</h2>
+      <p class="body mt-6">
+        Workshop "Desenvolvimento de aplicacoes Laravel: ferramentas, performance e qualidade com IA",
+        dado para a equipe de desenvolvimento da UFLA em 9 de setembro de 2026.
+      </p>
+      {/* confirmar: link para download do material do workshop */}
+    </section>
+  </div>
+</Base>
