@@ -5,44 +5,65 @@ import { person, breadcrumbs } from '@lib/seo';
 
 const title = 'Sobre';
 const description =
-  'Engenheiro de software e mestre em Ciencia da Computacao em Lavras/MG. Carreira, formacao, stack, principios e docencia.';
+  'Engenheiro de software e mestre em Ciência da Computação em Lavras/MG. Formação, carreira, stack, princípios e docência.';
 
 const jsonLd = [
   person(),
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Sobre', path: '/about' },
   ]),
 ];
 
-// Linha do tempo: so o que esta confirmado em docs/bio.md.
-const timeline = [
-  { year: '2013-2018', what: 'Bacharelado em Ciencia da Computacao, IFMG Campus Formiga' },
-  { year: '2017', what: 'Inicio da carreira profissional, Celula Web' },
-  { year: '2019-2021', what: 'Mestrado em Ciencia da Computacao, UFLA, linha de redes e sistemas embarcados' },
-  { year: '2022-2023', what: 'Coordenador de Desenvolvimento, Delta Global' },
-  { year: '2023-2026', what: 'Especialista e depois Team Leader, Stefanini, projeto SICVO para a Caixa' },
-  { year: '2026', what: 'Pratica independente pela Volpa: sistemas sob medida, automacao com IA e docencia' },
+// Formação: datas conferidas com o LinkedIn em 22 de outubro de 2026 (docs/bio.md).
+const education = [
+  { when: '2013-2018', what: 'Bacharelado em Ciência da Computação, IFMG Campus Formiga' },
+  {
+    when: '2015-2016',
+    what: 'Iniciação científica no IFMG Campus Formiga: um cluster Beowulf com 15 desktops ociosos e 36 processadores, testando a escalabilidade de um algoritmo distribuído',
+  },
+  {
+    when: '2019-2021',
+    what: 'Mestrado em Ciência da Computação, UFLA, na linha de redes de computadores e sistemas embarcados',
+  },
+  { when: '2023', what: 'Pós-graduação em Liderança e Gestão em Tecnologia, Escola Conquer' },
+  {
+    when: '2025-2026',
+    what: 'Pós-graduação em Desenvolvimento de Aplicações de Inteligência Artificial, Anhanguera',
+  },
 ];
-// confirmar: titulo da dissertacao de mestrado (UFLA)
-// confirmar: pos-graduacoes em Lideranca e Gestao (Escola Conquer) e Desenvolvimento de IA
-//   (Anhanguera); anos a confirmar, so publicar quando houver ano
-// confirmar: datas exatas de inicio na Celula Web
+// confirmar: título da dissertação de mestrado (UFLA)
 
-// Stack por camada.
+// Carreira: cada cargo com o período conferido no LinkedIn (docs/bio.md).
+const career = [
+  { when: 'fev/2017-abr/2018', what: 'Analista de Sistemas, Célula Web' },
+  { when: 'abr/2018-ago/2019', what: 'Desenvolvedor web freelancer' },
+  { when: 'mar/2019-jun/2021', what: 'Pesquisador de mestrado, LABSINE, UFLA' },
+  { when: 'set/2019-dez/2019', what: 'Pesquisador bolsista, FAPESP' },
+  { when: 'dez/2019-ago/2020', what: 'Desenvolvedor júnior, Delta Global' },
+  { when: 'set/2020-mar/2022', what: 'Desenvolvedor pleno, Delta Global' },
+  { when: 'abr/2022-jun/2022', what: 'Desenvolvedor sênior, Delta Global' },
+  { when: 'jul/2022-set/2023', what: 'Coordenador de Desenvolvimento, Delta Global' },
+  { when: 'out/2023-jan/2026', what: 'Especialista de Sistemas, Stefanini, no projeto SICVO para a Caixa' },
+  { when: 'dez/2025-set/2026', what: 'Team Leader de desenvolvimento, Stefanini' },
+  { when: 'desde set/2026', what: 'Prática independente pela Volpa: sistemas sob medida, automação com IA e docência' },
+];
+
+// Stack por camada (docs/bio.md).
 const stack = [
-  { layer: 'Linguagens', items: 'PHP 8.5, Python, TypeScript' },
-  { layer: 'Frameworks', items: 'Laravel 12, FilamentPHP v4' },
-  { layer: 'Dados', items: 'PostgreSQL, Redis, pgvector' },
-  { layer: 'Infra', items: 'FrankenPHP em modo worker, Docker Swarm, Portainer, Traefik, Oracle Cloud ARM, Vultr S3, GitHub Actions' },
-  { layer: 'IA e automacao', items: 'n8n self-hosted, Claude Code, Spec-Driven Development' },
+  { layer: 'Linguagens', items: 'PHP 8.5, Python, JavaScript, C, Java' },
+  { layer: 'Frameworks', items: 'Laravel 12, FilamentPHP v4, Vue.js, React, NestJS' },
+  { layer: 'Dados', items: 'PostgreSQL, MySQL, SQL Server, Redis, pgvector' },
+  { layer: 'Infra', items: 'FrankenPHP em modo worker, Docker Swarm, Portainer, Traefik, Oracle Cloud ARM, Vultr S3, RabbitMQ, GitHub Actions' },
+  { layer: 'IA e automação', items: 'n8n self-hosted, Claude Code, Spec-Driven Development' },
 ];
 
-// Principios que podem ser citados (docs/bio.md).
+// Princípios que podem ser citados (docs/bio.md).
 const principles = [
   'Ser o primeiro cliente do que vendo: uso todo dia o que construo.',
   'UX desde o primeiro dia e nada de overengineering.',
-  'Tres clientes pagantes sem customizacao antes de qualquer modulo. Foi o que o Basal me ensinou.',
+  'Três clientes pagantes sem customização antes de qualquer módulo. Foi o que o Basal me ensinou.',
+  'Nada de LLM em fluxo determinístico: automação com regras, não com modelo no caminho da mensagem.',
 ];
 ---
 
@@ -50,25 +71,42 @@ const principles = [
   <div class="max-w-[var(--measure)]">
     <h1 class="display-lg">Sobre</h1>
     <p class="lead mt-5 text-ink-muted">
-      Engenheiro de software e mestre em Ciencia da Computacao. Construo sistemas com Laravel e IA, em Lavras/MG.
+      Engenheiro de software e mestre em Ciência da Computação. Construo sistemas com Laravel e IA, em Lavras/MG.
+    </p>
+    <p class="body mt-5">
+      Atuo com desenvolvimento desde 2017. Passei por todos os níveis até coordenar time, liderei um
+      projeto de IA para a Caixa e hoje trabalho por conta própria.
     </p>
 
     <section class="mt-16">
-      <h2 class="display-md">Caminho</h2>
+      <h2 class="display-md">Formação</h2>
       <ul class="mt-6">
         {
-          timeline.map((t) => (
+          education.map((e) => (
             <li class="flex gap-4 border-t border-hairline py-4">
-              <span class="meta w-24 shrink-0">{t.year}</span>
-              <span class="body-sm">{t.what}</span>
+              <span class="meta w-32 shrink-0">{e.when}</span>
+              <span class="body-sm">{e.what}</span>
             </li>
           ))
         }
       </ul>
       <p class="meta mt-3">
-        Atuo com desenvolvimento desde 2017. As quatro publicacoes cientificas estao em{' '}
-        <a href="/research" class="text-signal-text">Pesquisa</a>.
+        As cinco publicações científicas estão em <a href="/research" class="text-signal-text">Pesquisa</a>.
       </p>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="display-md">Carreira</h2>
+      <ul class="mt-6">
+        {
+          career.map((c) => (
+            <li class="flex gap-4 border-t border-hairline py-4">
+              <span class="meta w-32 shrink-0">{c.when}</span>
+              <span class="body-sm">{c.what}</span>
+            </li>
+          ))
+        }
+      </ul>
     </section>
 
     <section class="mt-16">
@@ -86,22 +124,23 @@ const principles = [
     </section>
 
     <section class="mt-16">
-      <h2 class="display-md">Principios</h2>
+      <h2 class="display-md">Princípios</h2>
       <ul class="mt-6 space-y-4">
         {principles.map((p) => <li class="body">{p}</li>)}
       </ul>
     </section>
 
     <section class="mt-16">
-      <h2 class="display-md">Docencia</h2>
+      <h2 class="display-md">Docência</h2>
       <p class="body mt-6">
-        Em 9 de setembro de 2026 dei o workshop "Desenvolvimento de aplicacoes Laravel: ferramentas,
+        Em 9 de setembro de 2026 dei o workshop "Desenvolvimento de aplicações Laravel: ferramentas,
         performance e qualidade com IA" para a equipe de desenvolvimento da UFLA, em 2 horas.
       </p>
       <p class="body">
         Sou candidato a professor de TI com foco em IA na Fagammon. O material de aula fica em{' '}
         <a href="/research" class="text-signal-text">Pesquisa</a>.
       </p>
+      {/* confirmar: link para download do material do workshop da UFLA */}
     </section>
 
     <div class="mt-16 border-t border-hairline pt-8">
