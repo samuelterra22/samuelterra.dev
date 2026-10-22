@@ -1,0 +1,16 @@
+{
+  "title": "Intelligent network planning tool for location optimization of unmanned aerial vehicle base stations using geographical images",
+  "authors": [
+    "Okey Daniel Ogobuchi",
+    "Samuel Terra Vieira",
+    "Muhammad Saadi",
+    "Renata Lopes Rosa",
+    "Demóstenes Zegarra Rodríguez"
+  ],
+  "venue": "Journal of Electronic Imaging, vol. 31, n. 6, 061822",
+  "year": 2022,
+  "type": "journal",
+  "doi": "10.1117/1.JEI.31.6.061822",
+  "url": "https://doi.org/10.1117/1.JEI.31.6.061822",
+  "summary": "Uma ferramenta de planejamento de rede posiciona estações base em drones com simulated annealing, estima bateria e tempo de voo e usa o relevo tirado de imagens de mapa em vários modelos de perda de percurso."
+}

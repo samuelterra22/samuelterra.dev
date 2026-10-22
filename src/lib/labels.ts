@@ -35,6 +35,15 @@ export const kindLabels: Record<Kind, string> = {
   project: 'Projeto',
 };
 
+export type PublicationType = 'journal' | 'conference' | 'thesis' | 'other';
+
+export const publicationTypeLabels: Record<PublicationType, string> = {
+  journal: 'Periódico',
+  conference: 'Conferência',
+  thesis: 'Monografia',
+  other: 'Outro',
+};
+
 export const navLabels = {
   '/articles': 'Artigos',
   '/projects': 'Projetos',

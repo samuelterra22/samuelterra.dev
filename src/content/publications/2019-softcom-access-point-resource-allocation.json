@@ -1,0 +1,15 @@
+{
+  "title": "A Machine Learning Model to Resource Allocation Service for Access Point on Wireless Network",
+  "authors": [
+    "Davi Militani",
+    "Samuel Terra Vieira",
+    "Everthon Valadão",
+    "Kátia Neles",
+    "Renata Lopes Rosa",
+    "Demóstenes Zegarra Rodríguez"
+  ],
+  "venue": "27th International Conference on Software, Telecommunications and Computer Networks (SoftCOM)",
+  "year": 2019,
+  "type": "conference",
+  "summary": "Um modelo de Random Forest escolhe a qual ponto de acesso Wi-Fi o dispositivo se conecta, em vez de olhar só a força do sinal, e entrega mais vazão e canais melhores."
+}

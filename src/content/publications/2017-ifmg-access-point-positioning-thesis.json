@@ -1,0 +1,11 @@
+{
+  "title": "Otimização do posicionamento de pontos de acesso wireless",
+  "authors": [
+    "Samuel Terra Vieira"
+  ],
+  "venue": "Monografia de graduação em Ciência da Computação, IFMG Campus Formiga. Orientador: Prof. Me. Everthon Valadão dos Santos",
+  "year": 2017,
+  "type": "thesis",
+  "url": "https://www.formiga.ifmg.edu.br/documents/2017/PublicacoesTCCsBiblioteca/CienciadaComputacao/Monografia-Samuel-Terra-Vieira--Ciencia-da-Computacao.pdf",
+  "summary": "Software livre que simula a propagação do sinal Wi-Fi a partir da planta do ambiente e usa simulated annealing para escolher onde colocar os pontos de acesso. Deu origem ao artigo do SoftCOM 2019."
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Wireless Access Point Positioning Optimization",
+  "authors": [
+    "Samuel Terra Vieira",
+    "Everthon Valadão",
+    "Demóstenes Zegarra Rodríguez",
+    "Renata Lopes Rosa"
+  ],
+  "venue": "27th International Conference on Software, Telecommunications and Computer Networks (SoftCOM)",
+  "year": 2019,
+  "type": "conference",
+  "url": "https://www.academia.edu/40839360/Wireless_Access_Point_Positioning_Optimization",
+  "summary": "Um software decide onde colocar os pontos de acesso Wi-Fi numa planta baixa usando modelos de propagação de micro-ondas e simulated annealing, com as simulações aceleradas em GPU."
+}

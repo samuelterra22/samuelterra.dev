@@ -1,0 +1,14 @@
+{
+  "title": "A Speech Quality Classifier based on Tree-CNN Algorithm that Considers Network Degradations",
+  "authors": [
+    "Samuel Terra Vieira",
+    "Renata Lopes Rosa",
+    "Demóstenes Zegarra Rodríguez"
+  ],
+  "venue": "Journal of Communications Software and Systems, vol. 16, n. 2, p. 180-187",
+  "year": 2020,
+  "type": "journal",
+  "doi": "10.24138/jcomss.v16i2.1032",
+  "url": "https://doi.org/10.24138/jcomss.v16i2.1032",
+  "summary": "Um classificador de qualidade de voz baseado em Tree-CNN avalia a chamada sem precisar do áudio original, treina mais rápido e acerta cerca de 95% das classes, acima do ITU-T P.563 e do ViSQOL."
+}

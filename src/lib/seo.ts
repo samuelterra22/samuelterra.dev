@@ -60,14 +60,19 @@ interface PublicationData {
   url?: string;
 }
 
-// ScholarlyArticle: publicacoes academicas, com DOI quando houver.
+// ScholarlyArticle: publicacoes academicas. sameAs e identifier apontam para o DOI quando houver.
 export const scholarlyArticle = (p: PublicationData) => ({
   '@context': 'https://schema.org',
   '@type': 'ScholarlyArticle',
   headline: p.title,
   author: p.authors.map((name) => ({ '@type': 'Person', name })),
-  publisher: p.venue,
   datePublished: String(p.year),
-  ...(p.doi ? { identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: p.doi } } : {}),
+  isPartOf: { '@type': 'Periodical', name: p.venue },
+  ...(p.doi
+    ? {
+        sameAs: `https://doi.org/${p.doi}`,
+        identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: p.doi },
+      }
+    : {}),
   ...(p.url ? { url: p.url } : {}),
 });

@@ -1,67 +1,86 @@
 ---
 import Base from '@layouts/Base.astro';
 import { getPublications } from '@lib/content';
+import { publicationTypeLabels } from '@lib/labels';
 import { breadcrumbs, scholarlyArticle } from '@lib/seo';
 
+// Ordem decrescente de ano (getPublications ja ordena assim).
 const publications = await getPublications();
 
 const path = '/research';
 const jsonLd = [
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Pesquisa', path },
   ]),
   ...publications.map((p) => scholarlyArticle(p.data)),
 ];
+
+// Link do DOI quando houver; senao a url do trabalho; senao nada.
+const linkFor = (p: (typeof publications)[number]['data']) =>
+  p.doi ? `https://doi.org/${p.doi}` : (p.url ?? null);
 ---
 
 <Base
   title="Pesquisa"
-  description="Publicacoes com DOI, dissertacao de mestrado, interesses de pesquisa e material de aula."
+  description="Cinco publicações em redes sem fio, qualidade de voz e aprendizado de máquina, com dissertação, interesses e material de aula."
   path={path}
   jsonLd={jsonLd}
 >
   <div class="max-w-[var(--measure)]">
     <h1 class="display-lg">Pesquisa</h1>
     <p class="lead mt-5 text-ink-muted">
-      Mestre em Ciencia da Computacao pela UFLA, na linha de redes e sistemas embarcados.
+      Mestre em Ciência da Computação pela UFLA, na linha de redes de computadores e sistemas embarcados.
     </p>
 
     <section class="mt-16">
-      <h2 class="display-md">Publicacoes</h2>
+      <h2 class="display-md">Publicações</h2>
+      {/* confirmar: DOI dos dois artigos do SoftCOM 2019; links de Lattes, ORCID e Google Scholar */}
       {
         publications.length > 0 ? (
           <ol class="mt-6">
-            {publications.map((p) => (
-              <li class="border-t border-hairline py-5">
-                <h3 class="display-sm">{p.data.title}</h3>
-                <p class="meta mt-1">
-                  {p.data.authors.join('; ')} &middot; {p.data.venue} &middot; {p.data.year}
-                </p>
-                <p class="body-sm mt-2 text-ink-muted">{p.data.summary}</p>
-                {p.data.doi && (
-                  <p class="meta mt-2">
-                    <a href={p.data.url ?? `https://doi.org/${p.data.doi}`} class="text-signal-text">
-                      DOI: {p.data.doi}
-                    </a>
+            {publications.map((p) => {
+              const link = linkFor(p.data);
+              return (
+                <li class="border-t border-hairline py-6">
+                  <h3 class="display-sm">{p.data.title}</h3>
+                  <p class="body-sm mt-2">
+                    {p.data.authors.map((name, i) => (
+                      <>
+                        {i > 0 && '; '}
+                        {name === 'Samuel Terra Vieira' ? (
+                          <strong class="body-strong">{name}</strong>
+                        ) : (
+                          name
+                        )}
+                      </>
+                    ))}
                   </p>
-                )}
-              </li>
-            ))}
+                  <p class="meta mt-2">
+                    {publicationTypeLabels[p.data.type]} &middot; {p.data.venue} &middot; {p.data.year}
+                  </p>
+                  <p class="body-sm mt-2 text-ink-muted">{p.data.summary}</p>
+                  {link && (
+                    <p class="meta mt-2">
+                      <a href={link} class="text-signal-text">
+                        {p.data.doi ? `DOI: ${p.data.doi}` : 'Acessar o trabalho'}
+                      </a>
+                    </p>
+                  )}
+                </li>
+              );
+            })}
           </ol>
         ) : (
-          <p class="body mt-6 text-ink-muted">
-            Quatro publicacoes cientificas. Titulos, veiculos, anos e DOI em confirmacao.
-          </p>
+          <p class="body mt-6 text-ink-muted">Nenhuma publicação cadastrada ainda.</p>
         )
       }
     </section>
-    {/* confirmar: titulos, veiculos, anos e DOI das 4 publicacoes; Lattes, ORCID e Google Scholar */}
 
     <section class="mt-16">
-      <h2 class="display-md">Dissertacao</h2>
+      <h2 class="display-md">Dissertação</h2>
       <p class="body mt-6 text-ink-muted">
-        Mestrado na UFLA (2019 a 2021), na linha de redes e sistemas embarcados.
+        Mestrado na UFLA, de março de 2019 a junho de 2021, na linha de redes de computadores e sistemas embarcados.
       </p>
       {/* confirmar: titulo da dissertacao e resumo em linguagem comum */}
     </section>
@@ -69,16 +88,16 @@ const jsonLd = [
     <section class="mt-16">
       <h2 class="display-md">Interesses de pesquisa</h2>
       <ul class="mt-6 space-y-3">
-        <li class="body">IA aplicada em producao: agentes, memoria semantica e aprovacao humana.</li>
-        <li class="body">Redes e sistemas embarcados, da formacao de mestrado.</li>
-        <li class="body">Engenharia de software com metodo dirigido por especificacao.</li>
+        <li class="body">Redes sem fio: posicionamento de pontos de acesso e planejamento de rede.</li>
+        <li class="body">Qualidade de voz e aprendizado de máquina aplicados a telecomunicações.</li>
+        <li class="body">IA aplicada em produção: agentes, memória semântica e aprovação humana.</li>
       </ul>
     </section>
 
     <section class="mt-16">
       <h2 class="display-md">Material de aula</h2>
       <p class="body mt-6">
-        Workshop "Desenvolvimento de aplicacoes Laravel: ferramentas, performance e qualidade com IA",
+        Workshop "Desenvolvimento de aplicações Laravel: ferramentas, performance e qualidade com IA",
         dado para a equipe de desenvolvimento da UFLA em 9 de setembro de 2026.
       </p>
       {/* confirmar: link para download do material do workshop */}
