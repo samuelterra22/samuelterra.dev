@@ -11,5 +11,7 @@
   "venue": "27th International Conference on Software, Telecommunications and Computer Networks (SoftCOM)",
   "year": 2019,
   "type": "conference",
+  "doi": "10.23919/SOFTCOM.2019.8903853",
+  "url": "https://doi.org/10.23919/SOFTCOM.2019.8903853",
   "summary": "Um modelo de Random Forest escolhe a qual ponto de acesso Wi-Fi o dispositivo se conecta, em vez de olhar só a força do sinal, e entrega mais vazão e canais melhores."
 }

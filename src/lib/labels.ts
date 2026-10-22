@@ -35,12 +35,13 @@ export const kindLabels: Record<Kind, string> = {
   project: 'Projeto',
 };
 
-export type PublicationType = 'journal' | 'conference' | 'thesis' | 'other';
+export type PublicationType = 'journal' | 'conference' | 'bachelor-thesis' | 'master-thesis' | 'other';
 
 export const publicationTypeLabels: Record<PublicationType, string> = {
   journal: 'Periódico',
   conference: 'Conferência',
-  thesis: 'Monografia',
+  'bachelor-thesis': 'Monografia',
+  'master-thesis': 'Dissertação',
   other: 'Outro',
 };
 

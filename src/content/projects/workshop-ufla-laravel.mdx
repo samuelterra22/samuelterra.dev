@@ -1,0 +1,15 @@
+---
+title: "Workshop Laravel na UFLA"
+description: "Projeto de referência do workshop sobre ferramentas, performance e qualidade com IA, apresentado à equipe de desenvolvimento da UFLA em 2026."
+year: 2026
+status: "done"
+stack: ["Laravel", "Filament 4", "Pest", "PHPStan", "Rector", "Pint", "Docker", "GitHub Actions", "Prometheus", "Grafana"]
+repo: "https://github.com/samuelterra22/workshop-ufla-laravel"
+featured: true
+draft: false
+---
+Em 9 de setembro de 2026 apresentei à equipe de desenvolvimento da UFLA o workshop "Desenvolvimento de aplicações Laravel: ferramentas, performance e qualidade com IA", de duas horas. Este repositório é o projeto de referência: não é para produção, é para ler, quebrar e reconstruir.
+
+O quality gate roda Pint, Rector, PHPStan com Larastan, PHPInsights, Pest com cobertura e `composer audit`, na máquina e no GitHub Actions. O projeto sobe com Sail, com SQLite ou em um Codespace, tem painel em Filament 4 e monitoramento com Prometheus, Alertmanager, cAdvisor e Grafana, com alerta no Telegram.
+
+O laboratório tem três defeitos plantados, cada um pego por uma ferramenta diferente; o exercício termina quando `composer check` passa. Os arquivos CLAUDE.md, AGENTS.md, SPEC.md e TASKS.md mostram como um agente de IA entra no ciclo de desenvolvimento. Licença MIT.

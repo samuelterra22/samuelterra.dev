@@ -1,0 +1,11 @@
+{
+  "title": "Ferramenta para análise da cobertura de redes móveis utilizando diferentes modelos de propagação",
+  "authors": [
+    "Samuel Terra Vieira"
+  ],
+  "venue": "Dissertação de mestrado em Ciência da Computação, UFLA. Orientadora: Profa. Dra. Renata Lopes Rosa; coorientador: Prof. Dr. Demóstenes Zegarra Rodríguez",
+  "year": 2021,
+  "type": "master-thesis",
+  "url": "https://repositorio.ufla.br/handle/1/47965",
+  "summary": "Ferramenta que analisa a cobertura de redes móveis na região de Lavras com vários modelos de propagação e sugere posições de estação base por simulated annealing. Com o COST231-Hata, a cobertura subiu até 17,4%."
+}

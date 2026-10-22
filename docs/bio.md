@@ -1,6 +1,6 @@
 # Trajetória e fatos de Samuel Terra
 
-Fonte de verdade para a página Sobre, o currículo, as biografias de LinkedIn e Instagram e qualquer texto que cite a carreira. A seção de artigos do site se chama Artigos. O que está marcado "a confirmar" não entra em texto publicado até ser confirmado. Datas de carreira e formação conferidas com o perfil do LinkedIn em 22 de outubro de 2026.
+Fonte de verdade para a página Sobre, o currículo, as biografias de LinkedIn e Instagram e qualquer texto que cite a carreira. A seção de artigos do site se chama Artigos. O que está marcado "a confirmar" não entra em texto publicado até ser confirmado. Datas de carreira e formação conferidas com o perfil do LinkedIn, e publicações, links e pacotes confirmados por Samuel, em 22 de outubro de 2026. Nada aqui está pendente.
 
 ## Identidade
 
@@ -15,7 +15,7 @@ Fonte de verdade para a página Sobre, o currículo, as biografias de LinkedIn e
 | Período | Curso | Instituição | Observação |
 | --- | --- | --- | --- |
 | 2013–2018 | Bacharelado em Ciência da Computação | IFMG Campus Formiga | Monografia "Otimização do posicionamento de pontos de acesso wireless" (2017), orientador Prof. Me. Everthon Valadão dos Santos |
-| mar/2019–jun/2021 | Mestrado em Ciência da Computação, linha Redes de Computadores e Sistemas Embarcados | UFLA | Título da dissertação a confirmar |
+| mar/2019–jun/2021 | Mestrado em Ciência da Computação, linha Redes de Computadores e Sistemas Embarcados | UFLA | Dissertação "Ferramenta para análise da cobertura de redes móveis utilizando diferentes modelos de propagação", defendida em 27/08/2021; orientadora Profa. Dra. Renata Lopes Rosa, coorientador Prof. Dr. Demóstenes Zegarra Rodríguez; repositorio.ufla.br/handle/1/47965 |
 | jan/2023–dez/2023 | Pós-graduação lato sensu em Liderança e Gestão em Tecnologia | Escola Conquer | |
 | nov/2025–mar/2026 | Pós-graduação lato sensu em Desenvolvimento de Aplicações de Inteligência Artificial | Anhanguera | |
 
@@ -30,12 +30,15 @@ Os arquivos de `src/content/publications` são a cópia em código desta lista.
 | Ano | Título | Veículo | Tipo | DOI |
 | --- | --- | --- | --- | --- |
 | 2017 | Otimização do posicionamento de pontos de acesso wireless | Monografia, IFMG Campus Formiga | monografia | sem DOI; PDF público no site do campus |
-| 2019 | Wireless Access Point Positioning Optimization (Vieira, Valadão, Rodríguez, Rosa) | SoftCOM 2019 | conferência | a confirmar |
-| 2019 | A Machine Learning Model to Resource Allocation Service for Access Point on Wireless Network (Militani, Vieira, Valadão, Neles, Rosa, Rodríguez) | SoftCOM 2019 | conferência | a confirmar |
+| 2019 | Wireless Access Point Positioning Optimization (Vieira, Valadão, Rodríguez, Rosa) | SoftCOM 2019 | conferência | 10.23919/SOFTCOM.2019.8903880 |
+| 2019 | A Machine Learning Model to Resource Allocation Service for Access Point on Wireless Network (Militani, Vieira, Valadão, Neles, Rosa, Rodríguez) | SoftCOM 2019 | conferência | 10.23919/SOFTCOM.2019.8903853 |
+| 2021 | Ferramenta para análise da cobertura de redes móveis utilizando diferentes modelos de propagação | Dissertação de mestrado, UFLA | dissertação | sem DOI; repositorio.ufla.br/handle/1/47965 |
 | 2020 | A Speech Quality Classifier based on Tree-CNN Algorithm that Considers Network Degradations (Vieira, Rosa, Rodríguez) | Journal of Communications Software and Systems, v. 16, n. 2, p. 180–187 | periódico | 10.24138/jcomss.v16i2.1032 |
 | 2022 | Intelligent network planning tool for location optimization of unmanned aerial vehicle base stations using geographical images (Ogobuchi, Vieira, Saadi, Rosa, Rodríguez) | Journal of Electronic Imaging, v. 31, n. 6, 061822 | periódico | 10.1117/1.JEI.31.6.061822 |
 
-Código do trabalho de posicionamento de APs: github.com/samuelterra22/Wireless-Access-Point-Optimization. Links de Lattes, ORCID e Google Scholar a confirmar.
+Código do trabalho de posicionamento de APs: github.com/samuelterra22/Wireless-Access-Point-Optimization (Python, NumPy, CUDA, ezdxf, pygame; GPL-3.0).
+
+Perfis acadêmicos: Lattes http://lattes.cnpq.br/3974566012526176; ORCID https://orcid.org/0000-0002-8734-6578; Google Scholar https://scholar.google.com/citations?user=qW3B2gsAAAAJ&hl=pt-BR. Entram no `sameAs` do JSON-LD Person e na página Sobre.
 
 ## Carreira
 
@@ -68,9 +71,13 @@ Nunca publicar: regra de negócio, dado, nome de pessoa, número do contrato, de
 - Stack: Laravel 12, PHP 8.5 sobre FrankenPHP em modo worker (Octane), FilamentPHP v4, PostgreSQL, Redis, Docker Swarm com Portainer e Traefik em Oracle Cloud ARM, Vultr S3, GitHub Actions. Python para automação. n8n self-hosted. Spatie Media Library como padrão de arquivo.
 - Linguagens e ferramentas que já usou em produção, para a página Sobre: Python, PHP, JavaScript, C, Java, Node.js; Laravel, FilamentPHP, CodeIgniter, Scrapy, NestJS, Vue.js, React; MySQL, PostgreSQL, SQL Server; Docker, RabbitMQ.
 - Método: Spec-Driven Development com CLAUDE.md e documentos de handoff para implementação autônoma com Claude Code; régua de UX antes da primeira linha; diretório ~/.claude versionado com skills, agentes, hooks e MCP; rotina que lê os prompts dos últimos sete dias e propõe skills novas; Laravel Sail e Docker no ambiente local pela paridade com produção; monitoramento com Prometheus, Alertmanager, cAdvisor e Grafana com alerta no Telegram; backup de hora em hora como padrão.
-- Open source: um pacote Laravel por trimestre, aproximadamente. Já publicados: integração com a Evolution API e geração de relatórios. Nomes dos pacotes e links a confirmar.
+- Open source: um pacote Laravel por trimestre, aproximadamente. Publicados no Packagist (packagist.org/packages/samuelterra22/): `laravel-evolution-client` (cliente para a Evolution API, WhatsApp; v1.0.2, dez/2025; PHP 8.1 a 8.4, Laravel 9 a 12), `laravel-report-generator` (relatórios em PDF, Excel e CSV a partir de consultas Eloquent, com DomPDF ou Snappy e maatwebsite/excel; v1.0.1, fev/2026; PHP 8.2, Laravel 10 a 12), `laravel-telegram-notifications` (notificações, mensagens e logs pela Bot API do Telegram; v0.4.0, mar/2026; PHP 8.2, Laravel 11 e 12), `filament-pwa` (PWA para painéis Filament 4, com manifest, service worker e offline; v1.0.0, abr/2026; PHP 8.1, Laravel 11 e 12). Repositórios em github.com/samuelterra22/<nome>.
 - Projetos próprios para mostrar: Sopro (ditado por voz em tempo real no Windows com PySide6, RealtimeSTT e faster-whisper, usado todo dia); chatbot de WhatsApp Cloud API em n8n com memória semântica em pgvector; Kids Studio (pipeline de vídeo infantil com IA local, só a engenharia); template base laravel-filament-base (privado).
-- Docência e palestra: workshop "Desenvolvimento de aplicações Laravel: ferramentas, performance e qualidade com IA" para a equipe de desenvolvimento da UFLA em 09/09/2026, 2h; link do material a confirmar. Candidato a professor de TI com foco em IA na Fagammon (out/2026).
+- Docência e palestra: workshop "Desenvolvimento de aplicações Laravel: ferramentas, performance e qualidade com IA" para a equipe de desenvolvimento da UFLA em 09/09/2026, 2h. Material público: github.com/samuelterra22/workshop-ufla-laravel (projeto de referência com quality gate de Pint, Rector, PHPStan/Larastan, PHPInsights, Pest, cobertura e composer audit; Sail, SQLite ou Codespaces; Filament 4; monitoramento com Prometheus, Alertmanager, cAdvisor e Grafana; laboratório com três defeitos plantados; MIT). Candidato a professor de TI com foco em IA na Fagammon (out/2026); a candidatura não entra no site.
+
+## Página Sobre
+
+Texto aprovado em `docs/about.md`. Foto: `src/assets/brand/avatar.png`, autorizada para o site. O resumo do LinkedIn pode servir de fonte de fatos, não de tom; o tom é o de `docs/voice.md`.
 
 ## Princípios que podem ser citados
 

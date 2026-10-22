@@ -95,7 +95,7 @@ const publications = defineCollection({
     authors: z.array(z.string()).min(1),
     venue: z.string(),
     year: z.number().int(),
-    type: z.enum(['journal', 'conference', 'thesis', 'other']),
+    type: z.enum(['journal', 'conference', 'bachelor-thesis', 'master-thesis', 'other']),
     doi: z.string().optional(),
     url: z.string().url().optional(),
     // Resumo de uma frase, em linguagem comum.

@@ -9,6 +9,7 @@
   "venue": "27th International Conference on Software, Telecommunications and Computer Networks (SoftCOM)",
   "year": 2019,
   "type": "conference",
-  "url": "https://www.academia.edu/40839360/Wireless_Access_Point_Positioning_Optimization",
-  "summary": "Um software decide onde colocar os pontos de acesso Wi-Fi numa planta baixa usando modelos de propagação de micro-ondas e simulated annealing, com as simulações aceleradas em GPU."
+  "doi": "10.23919/SOFTCOM.2019.8903880",
+  "url": "https://doi.org/10.23919/SOFTCOM.2019.8903880",
+  "summary": "Um software decide onde colocar os pontos de acesso Wi-Fi numa planta baixa usando modelos de propagação e simulated annealing, com as simulações aceleradas em GPU."
 }
