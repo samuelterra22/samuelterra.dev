@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '@layouts/Base.astro';
-import Button from '@components/Button.astro';
+import avatar from '@assets/brand/avatar.png';
+import { site } from '@lib/labels';
 import { person, breadcrumbs } from '@lib/seo';
 
 const title = 'Sobre';
 const description =
-  'Engenheiro de software e mestre em Ciência da Computação em Lavras/MG. Formação, carreira, stack, princípios e docência.';
+  'Samuel Terra Vieira, engenheiro de software e mestre em Ciência da Computação em Lavras. Carreira, formação, pesquisa, ensino e código aberto.';
 
 const jsonLd = [
   person(),
@@ -15,136 +17,149 @@ const jsonLd = [
   ]),
 ];
 
-// Formação: datas conferidas com o LinkedIn em 22 de outubro de 2026 (docs/bio.md).
-const education = [
-  { when: '2013-2018', what: 'Bacharelado em Ciência da Computação, IFMG Campus Formiga' },
-  {
-    when: '2015-2016',
-    what: 'Iniciação científica no IFMG Campus Formiga: um cluster Beowulf com 15 desktops ociosos e 36 processadores, testando a escalabilidade de um algoritmo distribuído',
-  },
-  {
-    when: '2019-2021',
-    what: 'Mestrado em Ciência da Computação, UFLA, na linha de redes de computadores e sistemas embarcados',
-  },
-  { when: '2023', what: 'Pós-graduação em Liderança e Gestão em Tecnologia, Escola Conquer' },
-  {
-    when: '2025-2026',
-    what: 'Pós-graduação em Desenvolvimento de Aplicações de Inteligência Artificial, Anhanguera',
-  },
-];
-// confirmar: título da dissertação de mestrado (UFLA)
-
-// Carreira: cada cargo com o período conferido no LinkedIn (docs/bio.md).
-const career = [
-  { when: 'fev/2017-abr/2018', what: 'Analista de Sistemas, Célula Web' },
-  { when: 'abr/2018-ago/2019', what: 'Desenvolvedor web freelancer' },
-  { when: 'mar/2019-jun/2021', what: 'Pesquisador de mestrado, LABSINE, UFLA' },
-  { when: 'set/2019-dez/2019', what: 'Pesquisador bolsista, FAPESP' },
-  { when: 'dez/2019-ago/2020', what: 'Desenvolvedor júnior, Delta Global' },
-  { when: 'set/2020-mar/2022', what: 'Desenvolvedor pleno, Delta Global' },
-  { when: 'abr/2022-jun/2022', what: 'Desenvolvedor sênior, Delta Global' },
-  { when: 'jul/2022-set/2023', what: 'Coordenador de Desenvolvimento, Delta Global' },
-  { when: 'out/2023-jan/2026', what: 'Especialista de Sistemas, Stefanini, no projeto SICVO para a Caixa' },
-  { when: 'dez/2025-set/2026', what: 'Team Leader de desenvolvimento, Stefanini' },
-  { when: 'desde set/2026', what: 'Prática independente pela Volpa: sistemas sob medida, automação com IA e docência' },
-];
-
-// Stack por camada (docs/bio.md).
-const stack = [
-  { layer: 'Linguagens', items: 'PHP 8.5, Python, JavaScript, C, Java' },
-  { layer: 'Frameworks', items: 'Laravel 12, FilamentPHP v4, Vue.js, React, NestJS' },
-  { layer: 'Dados', items: 'PostgreSQL, MySQL, SQL Server, Redis, pgvector' },
-  { layer: 'Infra', items: 'FrankenPHP em modo worker, Docker Swarm, Portainer, Traefik, Oracle Cloud ARM, Vultr S3, RabbitMQ, GitHub Actions' },
-  { layer: 'IA e automação', items: 'n8n self-hosted, Claude Code, Spec-Driven Development' },
-];
-
-// Princípios que podem ser citados (docs/bio.md).
-const principles = [
-  'Ser o primeiro cliente do que vendo: uso todo dia o que construo.',
-  'UX desde o primeiro dia e nada de overengineering.',
-  'Três clientes pagantes sem customização antes de qualquer módulo. Foi o que o Basal me ensinou.',
-  'Nada de LLM em fluxo determinístico: automação com regras, não com modelo no caminho da mensagem.',
+// Links de perfil da secao "Onde me encontrar", na ordem do texto aprovado (docs/about.md).
+const profiles = [
+  { label: 'GitHub', href: site.github },
+  { label: 'LinkedIn', href: site.linkedin },
+  { label: 'Lattes', href: site.lattes },
+  { label: 'ORCID', href: site.orcid },
+  { label: 'Google Scholar', href: site.scholar },
+  { label: 'Packagist', href: site.packagist },
 ];
 ---
 
 <Base title={title} description={description} path="/about" type="profile" jsonLd={jsonLd}>
   <div class="max-w-[var(--measure)]">
-    <h1 class="display-lg">Sobre</h1>
+    <Image
+      src={avatar}
+      width={128}
+      height={128}
+      alt="Samuel Terra Vieira"
+      class="rounded-md border border-hairline"
+    />
+    <h1 class="display-lg mt-6">Sobre</h1>
     <p class="lead mt-5 text-ink-muted">
-      Engenheiro de software e mestre em Ciência da Computação. Construo sistemas com Laravel e IA, em Lavras/MG.
+      Sou Samuel Terra Vieira, engenheiro de software e mestre em Ciência da Computação. Moro em Lavras,
+      Minas Gerais, e trabalho com desenvolvimento desde 2017: comecei em agência e como freelancer,
+      passei por uma empresa de rastreamento, depois por um projeto de inteligência artificial para a
+      Caixa Econômica Federal, e hoje atendo por conta própria, na
+      <a href="https://volpa.com.br" class="text-signal-text">Volpa</a>.
     </p>
-    <p class="body mt-5">
-      Atuo com desenvolvimento desde 2017. Passei por todos os níveis até coordenar time, liderei um
-      projeto de IA para a Caixa e hoje trabalho por conta própria.
-    </p>
 
-    <section class="mt-16">
-      <h2 class="display-md">Formação</h2>
-      <ul class="mt-6">
-        {
-          education.map((e) => (
-            <li class="flex gap-4 border-t border-hairline py-4">
-              <span class="meta w-32 shrink-0">{e.when}</span>
-              <span class="body-sm">{e.what}</span>
-            </li>
-          ))
-        }
-      </ul>
-      <p class="meta mt-3">
-        As cinco publicações científicas estão em <a href="/research" class="text-signal-text">Pesquisa</a>.
-      </p>
-    </section>
-
-    <section class="mt-16">
-      <h2 class="display-md">Carreira</h2>
-      <ul class="mt-6">
-        {
-          career.map((c) => (
-            <li class="flex gap-4 border-t border-hairline py-4">
-              <span class="meta w-32 shrink-0">{c.when}</span>
-              <span class="body-sm">{c.what}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <section class="mt-16">
-      <h2 class="display-md">Stack</h2>
-      <dl class="mt-6">
-        {
-          stack.map((s) => (
-            <div class="flex gap-4 border-t border-hairline py-4">
-              <dt class="label w-32 shrink-0">{s.layer}</dt>
-              <dd class="body-sm m-0">{s.items}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </section>
-
-    <section class="mt-16">
-      <h2 class="display-md">Princípios</h2>
-      <ul class="mt-6 space-y-4">
-        {principles.map((p) => <li class="body">{p}</li>)}
-      </ul>
-    </section>
-
-    <section class="mt-16">
-      <h2 class="display-md">Docência</h2>
+    <section class="mt-14">
+      <h2 class="display-md">O que eu faço hoje</h2>
       <p class="body mt-6">
-        Em 9 de setembro de 2026 dei o workshop "Desenvolvimento de aplicações Laravel: ferramentas,
-        performance e qualidade com IA" para a equipe de desenvolvimento da UFLA, em 2 horas.
+        Desenvolvo sistemas sob medida para empresas e clínicas com Laravel 12, PHP 8.5 sobre FrankenPHP
+        em modo worker, FilamentPHP 4 e PostgreSQL. A infraestrutura roda em Docker Swarm, com Traefik e
+        Portainer, em máquinas ARM na Oracle Cloud. O monitoramento é Prometheus, Alertmanager, cAdvisor
+        e Grafana, com alerta no Telegram, e o backup é de hora em hora.
       </p>
       <p class="body">
-        Sou candidato a professor de TI com foco em IA na Fagammon. O material de aula fica em{' '}
-        <a href="/research" class="text-signal-text">Pesquisa</a>.
+        Automatizo rotinas com Python e n8n. Quando a tarefa é determinística, a regra fica no código e
+        nenhum modelo de linguagem entra no caminho da mensagem; o modelo entra quando há texto livre para
+        interpretar, como no chatbot de WhatsApp com memória semântica em pgvector que construí em n8n.
       </p>
-      {/* confirmar: link para download do material do workshop da UFLA */}
+      <p class="body">
+        Escrevo a especificação antes do código: um CLAUDE.md por projeto, documentos de handoff e
+        implementação assistida pelo Claude Code, com a régua de UX definida antes da primeira tela. Sou
+        o primeiro usuário do que construo. O Sopro, um ditado por voz em tempo real para Windows, roda
+        na minha máquina todos os dias.
+      </p>
     </section>
 
-    <div class="mt-16 border-t border-hairline pt-8">
-      <Button href="/contact" variant="secondary">Falar comigo</Button>
-    </div>
+    <section class="mt-14">
+      <h2 class="display-md">Carreira</h2>
+      <p class="body mt-6">
+        Comecei em fevereiro de 2017 na Célula Web, em Formiga, com sites e sistemas em WordPress, Laravel
+        e Java Spring Boot. De 2018 a 2019 atendi clientes como freelancer, com Laravel, Node.js e Vue.js.
+      </p>
+      <p class="body">
+        Na Delta Global, em Lavras, entrei como desenvolvedor júnior em dezembro de 2019 e passei por todos
+        os níveis até coordenar o time de desenvolvimento, de julho de 2022 a setembro de 2023. O trabalho
+        era o sistema de gestão interna da empresa e o rastreamento veicular, com os pacotes dos
+        rastreadores chegando por filas no RabbitMQ.
+      </p>
+      <p class="body">
+        De outubro de 2023 a setembro de 2026 estive na Stefanini, no SICVO, um sistema da Caixa Econômica
+        Federal que usa inteligência artificial para processar dossiês de crédito imobiliário em PDF.
+        Entrei como especialista de sistemas quando o projeto começou, com microsserviços em .NET/C#,
+        Vue.js e RabbitMQ em dois ambientes de produção, e nos últimos dez meses liderei o time de
+        desenvolvimento. Foi o projeto em que mais aprendi e em que mais apliquei o que acredito sobre
+        arquitetura.
+      </p>
+      <p class="body">
+        Desde setembro de 2026 trabalho de forma independente, com sistemas sob medida, automação com IA
+        e docência.
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="display-md">Formação e pesquisa</h2>
+      <p class="body mt-6">
+        Sou bacharel em Ciência da Computação pelo IFMG Campus Formiga (2013 a 2018). Na iniciação
+        científica, em 2015 e 2016, projetei e implantei um cluster Beowulf com 15 desktops ociosos e 36
+        processadores, e medi o ganho de desempenho de um algoritmo distribuído. A monografia virou
+        software livre e depois artigo: um programa que simula a propagação do sinal Wi-Fi sobre a planta
+        do prédio e usa simulated annealing e GPU para decidir onde colocar os pontos de acesso.
+      </p>
+      <p class="body">
+        Sou mestre em Ciência da Computação pela UFLA (2019 a 2021), na linha de redes de computadores e
+        sistemas embarcados, com orientação da professora Renata Lopes Rosa e coorientação do professor
+        Demóstenes Zegarra Rodríguez. A dissertação, "Ferramenta para análise da cobertura de redes móveis
+        utilizando diferentes modelos de propagação", compara modelos de propagação na região de Lavras e
+        sugere posições de estação base com simulated annealing; com o modelo COST231-Hata, a cobertura
+        subiu até 17,4%. Entre setembro e dezembro de 2019 passei um período de pesquisa em São Paulo com
+        apoio da FAPESP.
+      </p>
+      <p class="body">
+        Da pesquisa com o grupo do LABSINE saíram quatro publicações, duas em conferência (SoftCOM 2019)
+        e duas em periódico (Journal of Communications Software and Systems, 2020; Journal of Electronic
+        Imaging, 2022), sobre alocação de pontos de acesso com aprendizado de máquina, qualidade de voz
+        com redes neurais e planejamento de estações base em drones. A lista completa, com DOI, está em
+        <a href="/research" class="text-signal-text">Pesquisa</a>.
+      </p>
+      <p class="body">
+        Depois do mestrado fiz duas pós-graduações lato sensu: Liderança e Gestão em Tecnologia, na Escola
+        Conquer (2023), e Desenvolvimento de Aplicações de Inteligência Artificial, na Anhanguera (2025 a
+        2026).
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="display-md">Ensino e código aberto</h2>
+      <p class="body mt-6">
+        Em 9 de setembro de 2026 apresentei à equipe de desenvolvimento da UFLA o workshop "Desenvolvimento
+        de aplicações Laravel: ferramentas, performance e qualidade com IA", de duas horas. O
+        <a href="https://github.com/samuelterra22/workshop-ufla-laravel" class="text-signal-text">projeto de referência</a>
+        está no GitHub, com o quality gate completo e três defeitos plantados para o laboratório.
+      </p>
+      <p class="body">
+        Mantenho quatro pacotes Laravel no Packagist: um cliente para a Evolution API (WhatsApp), um
+        gerador de relatórios em PDF, Excel e CSV, notificações pelo Telegram e suporte a PWA para painéis
+        Filament. A meta é um pacote novo por trimestre. Os detalhes estão em
+        <a href="/projects" class="text-signal-text">Projetos</a>.
+      </p>
+      <p class="body">
+        Os artigos deste site existem para dois leitores ao mesmo tempo: quem já programa e quer a decisão
+        e o trade-off, e quem está começando e precisa de uma camada simples para entender. Por isso cada
+        artigo abre com um resumo em uma frase e traz uma caixa "Para quem está começando".
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2 class="display-md">Onde me encontrar</h2>
+      <p class="body mt-6">
+        {
+          profiles.map((p, i) => (
+            <>
+              {i > 0 && ', '}
+              <a href={p.href} class="text-signal-text">
+                {p.label}
+              </a>
+            </>
+          ))
+        }. E-mail e outros canais em <a href="/contact" class="text-signal-text">Contato</a>.
+      </p>
+    </section>
   </div>
 </Base>

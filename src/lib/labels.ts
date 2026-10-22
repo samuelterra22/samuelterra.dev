@@ -61,11 +61,13 @@ export const site = {
   tagline: 'Artigos sobre engenharia de software e IA.',
   // Frase da Home; confira contra docs/bio.md antes de mudar.
   intro: 'Engenheiro de software e mestre em Ciência da Computação. Construo sistemas com Laravel e IA.',
-  linkedin: 'https://www.linkedin.com/in/samuelterra22/',
+  linkedin: 'https://www.linkedin.com/in/samuelterra22',
   github: 'https://github.com/samuelterra22',
   instagram: 'https://www.instagram.com/samuelterrav/',
-  // Preencher quando os perfis existirem: lattes, orcid, scholar.
-  sameAs: [] as string[],
+  lattes: 'http://lattes.cnpq.br/3974566012526176',
+  orcid: 'https://orcid.org/0000-0002-8734-6578',
+  scholar: 'https://scholar.google.com/citations?user=qW3B2gsAAAAJ&hl=pt-BR',
+  packagist: 'https://packagist.org/packages/samuelterra22/',
 } as const;
 
 // Datas em metadados sempre no formato AAAA-MM-DD; por extenso só no corpo.

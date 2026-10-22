@@ -3,7 +3,8 @@ import { site } from './labels';
 
 const personId = `${site.url}/#person`;
 
-const sameAs = [site.linkedin, site.github, site.instagram, ...site.sameAs];
+// Perfis que provam a identidade do autor para o Google (sameAs do Person).
+const sameAs = [site.github, site.linkedin, site.lattes, site.orcid, site.scholar, site.packagist];
 
 // Person: a entidade que liga todos os textos ao autor. Usada na home e em /about.
 export const person = () => ({
