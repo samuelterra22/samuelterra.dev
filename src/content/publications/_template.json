@@ -1,0 +1,10 @@
+{
+  "title": "Título da publicação como consta no veículo",
+  "authors": ["Samuel Terra Vieira", "Coautor"],
+  "venue": "Nome do periódico ou conferência",
+  "year": 2021,
+  "type": "conference",
+  "doi": "10.0000/exemplo",
+  "url": "https://doi.org/10.0000/exemplo",
+  "summary": "Uma frase em linguagem comum sobre o que o trabalho mostrou."
+}

@@ -1,0 +1,103 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+/* Os tokens do design system expostos ao Tailwind. `inline` faz as utilities referenciarem
+   as variáveis em tempo de execução, o que é o que permite a troca de tema sem rebuild. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-paper-sunken: var(--paper-sunken);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-signal: var(--signal);
+  --color-signal-text: var(--signal-text);
+  --color-signal-tint: var(--signal-tint);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --spacing-1: var(--space-1);
+  --spacing-2: var(--space-2);
+  --spacing-3: var(--space-3);
+  --spacing-4: var(--space-4);
+  --spacing-6: var(--space-6);
+  --spacing-8: var(--space-8);
+  --spacing-12: var(--space-12);
+  --spacing-16: var(--space-16);
+  --spacing-24: var(--space-24);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-pill: var(--radius-pill);
+
+  --container-measure: var(--measure);
+  --container-content: var(--content-width);
+  --container-page: var(--page-width);
+}
+
+/* Base da página. Tudo o mais vem dos componentes. */
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.65;
+}
+
+a {
+  color: var(--signal-text);
+  text-decoration: underline;
+  text-decoration-color: var(--hairline);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 150ms;
+}
+
+a:hover {
+  text-decoration-color: var(--signal);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0;
+}
+
+h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.01em; font-variation-settings: "opsz" 60; }
+h2 { font-size: 30px; line-height: 1.2; font-variation-settings: "opsz" 36; margin-top: var(--space-8); }
+h3 { font-size: 23px; line-height: 1.3; font-variation-settings: "opsz" 24; margin-top: var(--space-6); }
+
+p { margin: 0 0 var(--space-4); }
+
+code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--paper-sunken);
+  border-radius: var(--radius-sm);
+  padding: 1px 5px;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: var(--space-12) 0;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  h1 { font-size: 36px; }
+}

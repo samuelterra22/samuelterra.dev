@@ -1,0 +1,103 @@
+/* Samuel Terra Vieira — tokens do design system (2026-10-22). Fonte da verdade: o artefato "Samuel Terra Vieira" no Claude. */
+/* As famílias --font-display, --font-sans e --font-mono vêm da Fonts API do Astro (provedor Fontsource); se o site não usar a Fonts API, descomente o bloco de @font-face no fim. */
+
+:root,
+[data-theme="light"] {
+  --paper: #faf8f3;
+  --paper-raised: #ffffff;
+  --paper-sunken: #f1eee7;
+  --ink: #1f1d1a;
+  --ink-muted: #5f5a52;
+  --hairline: #dad6ce;
+  --signal: #4f7f4c;
+  --signal-text: #3c6b3a;
+  --signal-tint: #e8efe6;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #141414;
+  --paper-raised: #1c1c1c;
+  --paper-sunken: #0d0d0d;
+  --ink: #ebe9e4;
+  --ink-muted: #a7a39b;
+  --hairline: #2e2e2e;
+  --signal: #8cbf86;
+  --signal-text: var(--signal);
+  --signal-tint: #1b2619;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141414;
+    --paper-raised: #1c1c1c;
+    --paper-sunken: #0d0d0d;
+    --ink: #ebe9e4;
+    --ink-muted: #a7a39b;
+    --hairline: #2e2e2e;
+    --signal: #8cbf86;
+    --signal-text: var(--signal);
+    --signal-tint: #1b2619;
+    color-scheme: dark;
+  }
+}
+
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-pill: 999px;
+
+  --measure: 68ch;
+  --content-width: 720px;
+  --page-width: 1120px;
+  --sidebar-width: 240px;
+  --hairline-width: 1px;
+}
+
+/* Estilos de texto. Display usa o eixo óptico da Source Serif 4. */
+.display-xl { font-family: var(--font-display); font-size: 64px; line-height: 1; font-weight: 400; letter-spacing: -0.01em; font-variation-settings: "opsz" 60; }
+.display-lg { font-family: var(--font-display); font-size: 44px; line-height: 1.1; font-weight: 400; letter-spacing: -0.01em; font-variation-settings: "opsz" 60; }
+.display-md { font-family: var(--font-display); font-size: 30px; line-height: 1.2; font-weight: 400; font-variation-settings: "opsz" 36; }
+.display-sm { font-family: var(--font-display); font-size: 23px; line-height: 1.3; font-weight: 400; font-variation-settings: "opsz" 24; }
+.lead { font-family: var(--font-sans); font-size: 21px; line-height: 1.5; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 18px; line-height: 1.65; font-weight: 400; }
+.body-strong { font-family: var(--font-sans); font-size: 18px; line-height: 1.65; font-weight: 600; }
+.body-sm { font-family: var(--font-sans); font-size: 16px; line-height: 1.55; font-weight: 400; }
+.caption { font-family: var(--font-sans); font-size: 14px; line-height: 1.45; font-weight: 400; color: var(--ink-muted); }
+.meta { font-family: var(--font-mono); font-size: 13px; line-height: 1.5; font-weight: 400; color: var(--ink-muted); }
+.code { font-family: var(--font-mono); font-size: 14px; line-height: 1.6; font-weight: 400; font-variant-ligatures: none; }
+.label { font-family: var(--font-mono); font-size: 12px; line-height: 1.4; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+
+@media (max-width: 640px) {
+  .display-lg { font-size: 36px; }
+  .body, .body-strong { font-size: 17px; }
+}
+
+/* Regras globais que o design system fixa. */
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+::selection { background: var(--signal-tint); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* Sem a Fonts API do Astro, use os arquivos de public/fonts:
+@font-face { font-family: "Source Serif 4"; src: url("/fonts/source-serif-4-latin-opsz-normal.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Serif 4"; src: url("/fonts/source-serif-4-latin-opsz-italic.woff2") format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url("/fonts/source-sans-3-latin-wght-normal.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Sans 3"; src: url("/fonts/source-sans-3-latin-wght-italic.woff2") format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Source Code Pro"; src: url("/fonts/source-code-pro-latin-wght-normal.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+:root {
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Source Code Pro", ui-monospace, "SF Mono", Menlo, monospace;
+}
+*/

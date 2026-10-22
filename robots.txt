@@ -1,5 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-Sitemap: https://samuelterra.dev/sitemap.xml
-
-User-agent: *
-Disallow:

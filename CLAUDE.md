@@ -1,45 +1,36 @@
-# CLAUDE.md
+# samuelterra.dev
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Site pessoal de Samuel Terra Vieira: Astro 6 estático, MDX, Tailwind v4, conteúdo em `src/content`, fontes Source servidas do próprio domínio. Substituiu uma página única em outubro de 2026; o site antigo está na branch `legacy`.
 
-## Overview
+Antes de qualquer coisa, leia o que o pedido exige:
 
-Personal landing page for Samuel Terra Vieira (samuelterra.dev). Positioned as a client-facing site for an independent software engineer — NOT a developer portfolio. Target audience is non-technical business owners who need software solutions, AI automations, and integrations. No build system, bundler, or framework — just plain HTML and CSS served directly.
+- `docs/brand.md` antes de tocar em qualquer coisa visual (tokens, componentes, layout, capas).
+- `docs/components.md` antes de criar ou alterar um componente.
+- `docs/voice.md` antes de escrever qualquer texto que a pessoa vai ler.
+- `docs/bio.md` antes de citar carreira, formação, publicações ou projetos.
+- `docs/proposal.md` para a arquitetura, as coleções, o formato de artigo e o backlog.
 
-## Architecture
+## Convenções
 
-- `index.html` — Single-page site with hero, capabilities, about, WhatsApp CTA, and social links. Contains all SEO meta tags (Open Graph, Twitter Cards, JSON-LD structured data).
-- `styles.css` — Dark theme styling using Inter font (Google Fonts), flexbox layout, CSS animations, glass-morphism effects. Responsive design with mobile-first approach.
-- `avatar.png` — Profile photo (copied from "Foto Perfil - Samuel.png").
-- `manifest.json` — PWA web app manifest.
-- Supporting assets: `favicon.ico`, `logo192.png`, `logo512.png`.
-- `sitemap.xml`, `robots.txt`, `humans.txt` — SEO and crawling configuration.
+- Código em inglês: rotas, pastas, arquivos, componentes, classes, variáveis, tokens, coleções, campos de frontmatter, skills e mensagens de commit.
+- Tela em português do Brasil: rótulos, títulos, conteúdo, textos de interface e comentários que explicam regra de negócio. A ponte entre os dois é `src/lib/labels.ts`; nunca escreva um rótulo em português fora dele.
+- Commits no padrão conventional commits, em inglês, um assunto por commit. Nunca `git push --force`.
+- Cores, fontes, espaços e raios só pelos tokens de `src/styles/tokens.css`, expostos ao Tailwind em `src/styles/global.css`. Nenhum valor solto em CSS de componente; nenhum `#hex` fora de `tokens.css`.
+- Sem dependência nova sem perguntar. Sem framework de UI. Sem JavaScript no cliente além do botão de tema, da busca (Pagefind) e do botão de copiar código.
+- Imagens pelo `astro:assets`, sempre com `width` e `height`. Nenhuma foto de banco, nenhuma ilustração gerada.
+- Ícones da biblioteca Lucide em SVG inline, traço de 1,5px; nunca emoji.
 
-## Development
+## Conteúdo
 
-No build or install step. Open `index.html` in a browser or serve with any static file server:
+- Coleções: `articles`, `notes`, `paths`, `projects`, `publications` (schemas em `src/content.config.ts`). Arquivos que começam com `_` são templates e não entram na build.
+- Nunca crie, edite ou apague um arquivo de conteúdo em `src/content` sem pedido explícito. Artigo novo só pelo skill `new-article`.
+- O formato fixo de artigo está em `src/content/articles/_template.mdx`; `<ForBeginners>` e `<PlainWords>` são obrigatórios nos artigos, opcionais nas notas.
+- Nível (`beginner`, `intermediate`, `advanced`) e tema são obrigatórios em tudo que é leitura.
 
-```
-python3 -m http.server 8000
-```
+## Qualidade
 
-## Content & Positioning Rules
-
-- **Target audience**: Non-technical business owners, NOT developers.
-- **Language**: Portuguese (pt-BR). Avoid technical jargon (no "React", "Docker", "Clean Architecture" on the page).
-- **Tone**: Professional authority. Sell without selling (Luana Carolina's approach).
-- **Services framed as outcomes**: "Automação com IA", "Chatbots inteligentes", "Sistemas sob medida" — NOT technology names.
-- **No employer mention**: Samuel is positioning as independent. Do NOT add company names.
-- **No geographic limitation**: Do NOT show city/state. Scope is Brazil and international.
-- **CTA goes to WhatsApp**: `wa.me/5537998469545` with pre-filled message.
-- **Authority signals**: M.Sc. in Computer Science (UFLA), 10+ years experience — mentioned subtly in the about text, never as badges.
-- **Social links order**: LinkedIn first (B2B), then Instagram, GitHub, Telegram, Email.
-
-## Technical Notes
-
-- Google Analytics tracking ID: `G-JGZ7YDLZTS`.
-- Icons are inline SVGs (no Font Awesome CDN — eliminated ~80KB).
-- Google Fonts loaded via `<link>` with preconnect (NOT CSS `@import`).
-- Avatar has animated conic-gradient ring with glow effect.
-- Accessibility: WCAG-compliant focus states, `aria-labels`, `prefers-reduced-motion` support, 44px minimum tap targets on mobile.
-- SEO: JSON-LD Person + WebSite schemas, canonical URL, absolute OG image URLs, `fetchpriority="high"` on avatar.
+- Antes de encerrar qualquer tarefa: `npm run build` e `npx astro check` sem erro nem aviso novo.
+- Toda página: `lang="pt-BR"`, um único `h1`, `title` e `description` únicos, canonical, Open Graph e JSON-LD do tipo certo (`Person` na home e em `/about`, `TechArticle` em artigos e notas, `ScholarlyArticle` em publicações, `BreadcrumbList` em tudo).
+- Contraste de texto de 4,5:1 nos dois temas; foco visível em todo elemento focável; nada se move no hover; `prefers-reduced-motion` respeitado.
+- Lighthouse no celular acima de 95 nas quatro notas é a meta de cada página nova.
+- Nada de regionalismo, vida pessoal, nome de cliente, valor de contrato ou dado de sistema de terceiro em texto algum.

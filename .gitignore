@@ -1,2 +1,13 @@
+# build + deps
 node_modules
+dist
+.astro
+
+# editors + tools
 .idea
+.serena
+.vscode
+
+# local claude state (keep skills tracked)
+.claude/settings.local.json
+.claude/.headroom_wrap_*
