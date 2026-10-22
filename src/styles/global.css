@@ -37,7 +37,9 @@
   --container-page: var(--page-width);
 }
 
-/* Base da página. Tudo o mais vem dos componentes. */
+/* Base da página. Fica em @layer base para que as utilities do Tailwind (text-paper,
+   no-underline, text-ink) vençam o estilo de elemento `a` nos botões e no menu. */
+@layer base {
 html {
   background: var(--paper);
   color: var(--ink);
@@ -100,4 +102,5 @@ img, svg, video {
 @media (max-width: 640px) {
   body { font-size: 17px; }
   h1 { font-size: 36px; }
+}
 }
