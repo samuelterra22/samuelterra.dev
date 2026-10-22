@@ -50,7 +50,6 @@ export const navLabels = {
   '/projects': 'Projetos',
   '/research': 'Pesquisa',
   '/about': 'Sobre',
-  '/now': 'Agora',
   '/contact': 'Contato',
 } as const;
 
@@ -60,7 +59,7 @@ export const site = {
   url: 'https://samuelterra.dev',
   tagline: 'Artigos sobre engenharia de software e IA.',
   // Frase da Home; confira contra docs/bio.md antes de mudar.
-  intro: 'Engenheiro de software e mestre em Ciência da Computação. Construo sistemas com Laravel e IA.',
+  intro: 'Engenheiro de software e mestre em Ciência da Computação.',
   linkedin: 'https://www.linkedin.com/in/samuelterra22',
   github: 'https://github.com/samuelterra22',
   instagram: 'https://www.instagram.com/samuelterrav/',
