@@ -55,10 +55,6 @@ export default defineConfig({
     }),
   ],
 
-  markdown: {
-    smartypants: true,
-  },
-
   vite: {
     plugins: [tailwindcss()],
   },
