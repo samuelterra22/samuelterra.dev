@@ -10,11 +10,11 @@ const [articles, notes, paths] = await Promise.all([getArticles(), getNotes(), g
 
 const title = 'Artigos';
 const description =
-  'Artigos, notas e trilhas sobre engenharia de software, Laravel e IA. Filtre por tema, nivel ou tipo, ou busque.';
+  'Artigos, notas e trilhas sobre engenharia de software, Laravel e IA. Filtre por tema, nível ou tipo, ou busque.';
 
 const jsonLd = [
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Artigos', path: '/articles' },
   ]),
 ];
@@ -30,7 +30,7 @@ const sections = [
   <div class="max-w-[var(--measure)]">
     <h1 class="display-lg">Artigos</h1>
     <p class="lead mt-5 text-ink-muted">
-      Artigos longos, notas curtas e trilhas de estudo. O mesmo texto serve a quem domina e a quem esta comecando.
+      Artigos longos, notas curtas e trilhas de estudo. O mesmo texto serve a quem domina e a quem está começando.
     </p>
 
     {/* Busca local com Pagefind. O indice e gerado na build; em dev o campo fica vazio. */}
@@ -49,7 +49,7 @@ const sections = [
         }
       </div>
       <div class="flex flex-wrap items-center gap-2">
-        <span class="label w-16">Nivel</span>
+        <span class="label w-16">Nível</span>
         {
           levels.map((l) => (
             <a href={`/articles/level/${l}`} class="meta rounded-pill border border-hairline px-3 py-1 no-underline hover:border-ink">
@@ -96,7 +96,7 @@ const sections = [
 
     {
       articles.length === 0 && notes.length === 0 && paths.length === 0 && (
-        <p class="body mt-12 text-ink-muted">Ainda nao ha nada publicado aqui.</p>
+        <p class="body mt-12 text-ink-muted">Ainda não há nada publicado aqui.</p>
       )
     }
   </div>

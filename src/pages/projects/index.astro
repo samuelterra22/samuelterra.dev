@@ -7,14 +7,14 @@ const projects = await getProjects();
 
 const statusLabels: Record<string, string> = {
   active: 'em andamento',
-  done: 'concluido',
+  done: 'concluído',
   paused: 'pausado',
 };
 
 const path = '/projects';
 const jsonLd = [
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Projetos', path },
   ]),
 ];
@@ -22,14 +22,14 @@ const jsonLd = [
 
 <Base
   title="Projetos"
-  description="Estudos de caso: o problema, as decisoes, o resultado e o que eu faria diferente."
+  description="Estudos de caso: o problema, as decisões, o resultado e o que eu faria diferente."
   path={path}
   jsonLd={jsonLd}
 >
   <div class="max-w-[var(--measure)]">
     <h1 class="display-lg">Projetos</h1>
     <p class="lead mt-5 text-ink-muted">
-      Cada projeto conta o problema, as decisoes de arquitetura, o resultado e o que eu faria diferente.
+      Cada projeto conta o problema, as decisões de arquitetura, o resultado e o que eu faria diferente.
     </p>
 
     {

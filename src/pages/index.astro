@@ -9,7 +9,7 @@ import { person, breadcrumbs } from '@lib/seo';
 const reading = (await getReading()).slice(0, 3);
 const projects = (await getProjects()).slice(0, 3);
 
-const jsonLd = [person(), breadcrumbs([{ name: 'Inicio', path: '/' }])];
+const jsonLd = [person(), breadcrumbs([{ name: 'Início', path: '/' }])];
 ---
 
 <Base title={site.name} description={site.intro} path="/" type="profile" jsonLd={jsonLd}>

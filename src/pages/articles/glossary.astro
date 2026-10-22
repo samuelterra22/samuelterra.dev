@@ -14,23 +14,23 @@ const terms = (glossary as Term[]).sort((a, b) => a.term.localeCompare(b.term, '
 const path = '/articles/glossary';
 const jsonLd = [
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Artigos', path: '/articles' },
-    { name: 'Glossario', path },
+    { name: 'Glossário', path },
   ]),
 ];
 ---
 
 <Base
-  title="Glossario"
-  description="Os termos tecnicos dos artigos, cada um explicado em duas frases."
+  title="Glossário"
+  description="Os termos técnicos dos artigos, cada um explicado em duas frases."
   path={path}
   jsonLd={jsonLd}
 >
   <div class="max-w-[var(--measure)]">
-    <h1 class="display-lg">Glossario</h1>
+    <h1 class="display-lg">Glossário</h1>
     <p class="lead mt-5 text-ink-muted">
-      Os termos que aparecem nas caixas "Em palavras simples", reunidos em um lugar so.
+      Os termos que aparecem nas caixas "Em palavras simples", reunidos em um lugar só.
     </p>
 
     {
@@ -44,7 +44,7 @@ const jsonLd = [
           ))}
         </dl>
       ) : (
-        <p class="body mt-10 text-ink-muted">O glossario cresce junto com os artigos. Ainda nao ha termos.</p>
+        <p class="body mt-10 text-ink-muted">O glossário cresce junto com os artigos. Ainda não há termos.</p>
       )
     }
   </div>

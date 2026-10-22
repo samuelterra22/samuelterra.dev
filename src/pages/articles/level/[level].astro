@@ -17,16 +17,16 @@ const path = `/articles/level/${level}`;
 
 const jsonLd = [
   breadcrumbs([
-    { name: 'Inicio', path: '/' },
+    { name: 'Início', path: '/' },
     { name: 'Artigos', path: '/articles' },
-    { name: `Nivel ${label}`, path },
+    { name: `Nível ${label}`, path },
   ]),
 ];
 ---
 
-<Base title={`Nivel: ${label}`} description={`Artigos, notas e trilhas de nivel ${label}.`} path={path} jsonLd={jsonLd}>
+<Base title={`Nível: ${label}`} description={`Artigos, notas e trilhas de nível ${label}.`} path={path} jsonLd={jsonLd}>
   <div class="max-w-[var(--measure)]">
-    <p class="label">Nivel</p>
+    <p class="label">Nível</p>
     <h1 class="display-lg mt-2">{label}</h1>
     {
       items.length > 0 ? (
@@ -36,7 +36,7 @@ const jsonLd = [
           ))}
         </div>
       ) : (
-        <p class="body mt-8 text-ink-muted">Ainda nao ha nada publicado neste nivel.</p>
+        <p class="body mt-8 text-ink-muted">Ainda não há nada publicado neste nível.</p>
       )
     }
   </div>

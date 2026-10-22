@@ -41,7 +41,7 @@ const {
 const minutes = readingMinutes(body);
 
 const trail = [
-  { name: 'Inicio', path: '/' },
+  { name: 'Início', path: '/' },
   { name: 'Artigos', path: '/articles' },
   ...(kind === 'note' ? [{ name: 'Notas', path: '/articles/notes' }] : []),
   { name: title, path },
